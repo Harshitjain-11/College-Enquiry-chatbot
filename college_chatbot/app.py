@@ -45,7 +45,9 @@ from database.db_manager import (
     get_all_appointments,
     get_all_leads,
     update_appointment_status,
-    get_stats,
+        get_stats,
+        save_session_context,
+        save_intent_history,
 )
 
 # ── Logging setup ─────────────────────────────────────────────────────────────
@@ -156,6 +158,33 @@ def _preprocess_message(text: str) -> str:
     return text
 
 
+def _route_common_intent(message: str) -> str | None:
+    """Fast-path intent routing for common high-value conversational phrases."""
+    text = message.lower().strip()
+
+    greeting_phrases = {
+        "hello", "hi", "hii", "hey", "hello bhai", "kya scene hai",
+        "namaste", "namaskar", "good morning", "good afternoon", "good evening",
+    }
+    if text in greeting_phrases:
+        return "greeting"
+
+    if text in {
+        "tell me about your college", "tell me about the college", "about itm",
+        "is itm good", "itm good", "college kaisa hai", "tell me about itm",
+        "tell me about college",
+    }:
+        return "college_overview"
+
+    if text in {"where is itm located", "where is itm", "itm located", "kahan hai college"}:
+        return "contact_info"
+
+    if text in {"tell me about ds", "ds branch hai", "ds branch", "data science", "data science branch", "cse ds", "cs-ds"}:
+        return "specializations"
+
+    return None
+
+
 # ── HTTP Basic Auth helper ────────────────────────────────────────────────────
 
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
@@ -218,6 +247,9 @@ def chat():
         return jsonify({"error": "Empty message."}), 400
 
     logger.info("session=%s message=%r", session_id, raw_message)
+    booking_id: str | None = None
+    slot_prompt: str | None = None
+    current_slot_state = slot_manager.get_state(session_id)
 
     # ── BUG 1 FIX: Quick-reply button → skip NLP ──────────────────────
     if raw_message in QUICK_REPLY_MAP:
@@ -243,6 +275,52 @@ def chat():
     else:
         # ── Preprocessing (PART H edge cases) ─────────────────────────
         user_message = _preprocess_message(raw_message)
+
+        # High-confidence routing for a few common queries before NLP.
+        routed_intent = _route_common_intent(user_message)
+        if routed_intent:
+            classification = {
+                "intent": routed_intent,
+                "confidence": 0.98,
+                "matched_keywords": [],
+                "tokens": [],
+                "method": "app_rule_based",
+            }
+            intent = classification["intent"]
+            confidence = classification["confidence"]
+            entities = entity_extractor.extract(user_message)
+            ctx = context_manager.get_or_create(session_id)
+            reply, quick_replies = response_generator.generate(
+                intent=intent,
+                entities=entities,
+                context=ctx,
+                slot_state=current_slot_state.value,
+                extra_data={"slot_prompt": slot_prompt},
+            )
+
+            context_manager.update(
+                session_id=session_id,
+                user_message=raw_message,
+                bot_response=reply,
+                intent=intent,
+                entities=entities,
+                slot_state=current_slot_state.value,
+            )
+            try:
+                save_enquiry_log(session_id, raw_message, reply, intent, confidence)
+            except Exception as exc:
+                logger.error("Failed to save enquiry log: %s", exc)
+
+            return jsonify(
+                {
+                    "reply": reply,
+                    "quick_replies": quick_replies,
+                    "intent": intent,
+                    "confidence": confidence,
+                    "slot_state": current_slot_state.value,
+                    "booking_id": booking_id,
+                }
+            )
 
         # Context resolution (pronoun / anaphora)
         resolved_message = context_manager.resolve_text(session_id, user_message)
@@ -288,12 +366,13 @@ def chat():
         classification = intent_classifier.classify(resolved_message, session_id=session_id)
         intent = classification["intent"]
         confidence = classification["confidence"]
+        # Persist intent history for analytics
+        try:
+            save_intent_history(session_id, intent, confidence, ",".join(classification.get("tokens", [])))
+        except Exception:
+            logger.debug("Failed to save intent history for session %s", session_id)
 
     # ── Slot-filling state machine ────────────────────────────────────
-    booking_id: str | None = None
-    slot_prompt: str | None = None
-    current_slot_state = slot_manager.get_state(session_id)
-
     if intent == "slot_booking" and not slot_manager.is_active(session_id):
         slot_prompt = slot_manager.start_booking(session_id, entities)
         current_slot_state = slot_manager.get_state(session_id)
@@ -353,6 +432,12 @@ def chat():
         entities=entities,
         slot_state=current_slot_state.value,
     )
+
+    # Persist session context snapshot for admin analytics
+    try:
+        save_session_context(session_id, context_manager.get_or_create(session_id))
+    except Exception:
+        logger.debug("Failed to persist session context for %s", session_id)
 
     # Persist enquiry log
     try:

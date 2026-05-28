@@ -1,44 +1,110 @@
 {
   "college": {
-    "name": "Institute of Technology & Management",
+    "name": "Institute of Technology & Management (ITM Gwalior)",
     "short_name": "ITM Gwalior",
     "established": 1997,
-    "naac_grade": "B++",
+    "naac_grade": "A",
+    "naac_cgpa": 3.01,
+    "naac_valid_till": "November 24, 2030",
+    "nba_accredited": true,
+    "aicte_approved": true,
+    "rgpv_affiliated": true,
     "affiliating_university": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal",
-    "type": "Private (AICTE Approved)",
+    "type": "Private institute",
     "location": "Gwalior, Madhya Pradesh",
-    "address": "ITM Campus, Turari, NH-75, Gwalior - 474001, Madhya Pradesh, India",
-    "phone": ["+91-751-2970300", "+91-9039019301"],
-    "email": "info@itmgwalior.ac.in",
-    "admissions_email": "admissions@itmgwalior.ac.in",
-    "website": "www.itmgwalior.ac.in",
+    "address": "ITM Campus, Opp. Sithouli Railway Station, NH-75 Sithouli, Jhansi Road, Gwalior - 475001, MP",
+    "phone": ["+91-751-2440056", "+91-751-2432977"],
+    "admission_phone": ["+91-7773005065", "+91-7773001624", "+91-7773001627"],
+    "email": "info@itmgoi.in",
+    "admissions_email": "admission@itmgoi.in",
+    "website": "www.itmgoi.in",
+    "apply_online": "http://itmgoi.in/OnlineApply_ITMGOI",
     "google_maps": "https://bit.ly/itm-gwalior",
-    "office_hours": "Monday to Saturday, 9:00 AM – 5:00 PM",
-    "accreditations": ["NAAC B++", "AICTE Approved", "UGC Recognized", "RGPV Affiliated"]
+    "office_hours": "Monday to Saturday, 9:00 AM to 5:00 PM",
+    "library_hours": "Monday to Saturday, 8:00 AM to 8:00 PM",
+    "nearest_station": "Sithouli Railway Station",
+    "nearest_railway_station": "Sithouli Railway Station (opposite campus)",
+    "accreditations": [
+      "NAAC A Grade (CGPA 3.01)",
+      "NBA Accredited",
+      "AICTE Approved",
+      "RGPV Affiliated"
+    ],
+    "awards": [
+      "Microsoft Learn Centre of Excellence (2024-2025)",
+      "Best Institute for Training & Placements - Indian Education Excellence Awards 2022",
+      "World Book of Records - 5 Lakh Internships in 3 Years",
+      "Best Placement Award - National Technical Excellence Education Summit 2014"
+    ]
   },
   "courses": {
     "ug": [
       {
         "name": "B.Tech Computer Science Engineering",
-        "short": "B.Tech CS",
+        "short": "B.Tech CSE",
+        "full_name": "Bachelor of Technology in Computer Science and Engineering",
         "duration": "4 years",
+        "total_semesters": 8,
         "seats": 120,
+        "yearly_fees": 87000,
         "fees_per_year": 87000,
-        "eligibility": "60% in PCM (Physics, Chemistry, Maths) in 12th + JEE Mains score",
-        "min_percentage": 60,
-        "entrance_exam": "JEE Mains / RGPV Counselling (DTE MP)",
-        "specializations": ["AI & ML", "Data Science", "Cybersecurity", "IoT"]
+        "eligibility": "60% in PCM in 12th or equivalent; JEE/DTE as applicable",
+        "entrance_exam": "JEE Mains / DTE MP Counselling",
+        "specializations": ["CSE AIML", "CSE Data Science", "CSE Cyber Security", "CSE IoT", "CSE Cloud"],
+        "career_options": ["Software Engineer", "AI/ML Engineer", "Data Scientist", "Cybersecurity Analyst", "Cloud Engineer"],
+        "avg_salary": "Rs. 5.5 LPA",
+        "highest_package": "Rs. 18 LPA",
+        "recommended_for": "students interested in programming, algorithms, data and AI",
+        "core_subjects": ["Data Structures", "Algorithms", "Operating Systems", "Database Systems", "Computer Networks", "Software Engineering", "Machine Learning", "Artificial Intelligence"],
+        "labs": ["Programming Lab", "DBMS Lab", "Networks Lab", "AI/ML Lab", "Cybersecurity Lab"],
+        "internship_opportunities": "Strong industry ties; internships with IT firms and startups during 6th-8th semesters",
+        "placement_support": "Dedicated training and placement cell offering CV prep, mock interviews, and company tie-ups",
+        "industry_domains": ["Software & Services", "AI & Data Science", "Cybersecurity", "Cloud & DevOps"],
+        "is_good_for": "students who want software and AI careers"
+      },
+      {
+        "name": "B.Tech Information Technology",
+        "short": "B.Tech IT",
+        "full_name": "Bachelor of Technology in Information Technology",
+        "duration": "4 years",
+        "total_semesters": 8,
+        "seats": 60,
+        "yearly_fees": 85000,
+        "fees_per_year": 85000,
+        "eligibility": "60% in PCM in 12th or equivalent",
+        "entrance_exam": "JEE Mains / DTE MP Counselling",
+        "specializations": ["Web Technologies", "Mobile App Development", "Network Security", "Database Management"],
+        "career_options": ["Web Developer", "App Developer", "Network Engineer", "Database Administrator"],
+        "avg_salary": "Rs. 4.5 to 6 LPA",
+        "highest_package": "Rs. 12 LPA",
+        "recommended_for": "students focused on software development, web and system design",
+        "core_subjects": ["Programming in C/C++/Java", "Web Technologies", "Database Systems", "Software Engineering", "Computer Networks"],
+        "labs": ["Programming Lab", "Web Lab", "DBMS Lab", "Network Lab"],
+        "internship_opportunities": "Internships in product companies and startups; support from placement cell",
+        "placement_support": "Career counselling, internships and placement drives",
+        "industry_domains": ["Web Development", "Mobile Apps", "Enterprise Systems"]
       },
       {
         "name": "B.Tech Electronics & Communication Engineering",
-        "short": "B.Tech EC",
+        "short": "B.Tech ECE",
+        "full_name": "Bachelor of Technology in Electronics & Communication Engineering",
         "duration": "4 years",
+        "total_semesters": 8,
         "seats": 60,
+        "yearly_fees": 84000,
         "fees_per_year": 84000,
-        "eligibility": "60% in PCM in 12th + JEE Mains score",
-        "min_percentage": 60,
-        "entrance_exam": "JEE Mains / RGPV Counselling (DTE MP)",
-        "specializations": ["VLSI Design", "Embedded Systems", "Signal Processing"]
+        "eligibility": "60% in PCM in 12th or equivalent",
+        "entrance_exam": "JEE Mains / DTE MP Counselling",
+        "specializations": ["VLSI Design", "Embedded Systems", "Signal Processing"],
+        "career_options": ["Electronics Engineer", "VLSI Engineer", "Embedded Systems Engineer", "Telecom Engineer"],
+        "avg_salary": "Rs. 4 to 6 LPA",
+        "highest_package": "Rs. 10 LPA",
+        "recommended_for": "students interested in electronics, embedded systems and hardware design",
+        "core_subjects": ["Circuit Theory", "Electronic Devices", "Signal Processing", "Digital Electronics", "Microprocessors"],
+        "labs": ["Electronics Lab", "VLSI Lab", "Embedded Systems Lab"],
+        "internship_opportunities": "Internships in hardware firms and research labs",
+        "placement_support": "Assistance via placement cell and industry projects",
+        "industry_domains": ["Semiconductors", "Telecommunications", "Embedded Systems"]
       },
       {
         "name": "B.Tech Mechanical Engineering",
@@ -46,21 +112,25 @@
         "duration": "4 years",
         "seats": 60,
         "fees_per_year": 82000,
-        "eligibility": "60% in PCM in 12th + JEE Mains score",
-        "min_percentage": 60,
-        "entrance_exam": "JEE Mains / RGPV Counselling (DTE MP)",
-        "specializations": ["Automobile Engineering", "Thermal Engineering", "Manufacturing"]
+        "eligibility": "60% in PCM in 12th + JEE Mains",
+        "entrance_exam": "JEE Mains / DTE MP Counselling",
+        "specializations": ["Automobile Engineering", "Thermal Engineering", "Manufacturing", "CAD/CAM"],
+        "career_options": ["Mechanical Engineer", "Production Engineer", "Design Engineer", "Automobile Engineer"],
+        "avg_salary": "Rs. 3.5 to 5.5 LPA",
+        "is_good_for": "students who like machines, design, production, and automobiles"
       },
       {
         "name": "B.Tech Civil Engineering",
-        "short": "B.Tech CE",
+        "short": "B.Tech Civil",
         "duration": "4 years",
         "seats": 60,
         "fees_per_year": 80000,
-        "eligibility": "60% in PCM in 12th + JEE Mains score",
-        "min_percentage": 60,
-        "entrance_exam": "JEE Mains / RGPV Counselling (DTE MP)",
-        "specializations": ["Structural Engineering", "Environmental Engineering"]
+        "eligibility": "60% in PCM in 12th + JEE Mains",
+        "entrance_exam": "JEE Mains / DTE MP Counselling",
+        "specializations": ["Structural Engineering", "Environmental Engineering", "Transportation Engineering"],
+        "career_options": ["Civil Engineer", "Site Engineer", "Structural Engineer", "Quantity Surveyor"],
+        "avg_salary": "Rs. 3.5 to 5 LPA",
+        "is_good_for": "students interested in construction, infrastructure, and public works"
       },
       {
         "name": "Bachelor of Computer Applications",
@@ -68,10 +138,12 @@
         "duration": "3 years",
         "seats": 60,
         "fees_per_year": 48000,
-        "eligibility": "55% in 12th with Mathematics as a subject",
-        "min_percentage": 55,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Web Development", "Mobile App Development", "Database Management"]
+        "eligibility": "55% in 12th with Mathematics",
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Web Development", "Mobile App Development", "Database Management"],
+        "career_options": ["Software Developer", "Web Developer", "System Analyst"],
+        "avg_salary": "Rs. 3 to 5 LPA for entry-level roles",
+        "is_good_for": "students who want a quick path into software and IT jobs"
       },
       {
         "name": "Bachelor of Business Administration",
@@ -80,9 +152,11 @@
         "seats": 60,
         "fees_per_year": 42000,
         "eligibility": "50% in 12th (any stream)",
-        "min_percentage": 50,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Marketing", "Finance", "Human Resources", "Entrepreneurship"]
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Marketing", "Finance", "Human Resources", "Entrepreneurship"],
+        "career_options": ["Business Analyst", "Marketing Executive", "HR Associate", "Operations Coordinator"],
+        "avg_salary": "Rs. 3 to 4.5 LPA",
+        "is_good_for": "students who want business, sales, HR, or startup careers"
       },
       {
         "name": "Bachelor of Science",
@@ -91,9 +165,11 @@
         "seats": 60,
         "fees_per_year": 36000,
         "eligibility": "55% in 12th (Science stream)",
-        "min_percentage": 55,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Physics", "Chemistry", "Mathematics", "Computer Science"]
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Physics", "Chemistry", "Mathematics", "Computer Science"],
+        "career_options": ["Research Assistant", "Lab Technician", "Scientist", "Teacher"],
+        "avg_salary": "Rs. 2.5 to 4 LPA initially",
+        "is_good_for": "students who want science, research, and teaching paths"
       },
       {
         "name": "Bachelor of Commerce",
@@ -102,9 +178,11 @@
         "seats": 60,
         "fees_per_year": 32000,
         "eligibility": "50% in 12th (any stream)",
-        "min_percentage": 50,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Accounting", "Taxation", "Business Law"]
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Accounting", "Taxation", "Business Law"],
+        "career_options": ["Accountant", "Tax Consultant", "Finance Assistant"],
+        "avg_salary": "Rs. 2.5 to 4 LPA",
+        "is_good_for": "students interested in commerce, accounting, and finance"
       }
     ],
     "pg": [
@@ -114,21 +192,12 @@
         "duration": "2 years",
         "seats": 30,
         "fees_per_year": 92000,
-        "eligibility": "Relevant B.Tech/B.E. with 60% marks + GATE score (preferred)",
-        "min_percentage": 60,
-        "entrance_exam": "GATE / RGPV M.Tech Entrance",
-        "specializations": ["Computer Science", "Electronics", "Mechanical", "Civil"]
-      },
-      {
-        "name": "Master of Computer Applications",
-        "short": "MCA",
-        "duration": "2 years",
-        "seats": 60,
-        "fees_per_year": 58000,
-        "eligibility": "BCA/B.Sc (CS/IT)/B.Tech with 55% marks + Mathematics in qualifying exam",
-        "min_percentage": 55,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Software Engineering", "Cloud Computing", "Data Analytics"]
+        "eligibility": "Relevant B.Tech/B.E. with 60%",
+        "entrance_exam": "GATE / RGPV entrance",
+        "specializations": ["Computer Science", "Electronics", "Mechanical", "Civil"],
+        "career_options": ["Senior Engineer", "Research Scientist", "Professor"],
+        "avg_salary": "Rs. 5 to 8 LPA",
+        "is_good_for": "students who want specialization, research, or teaching"
       },
       {
         "name": "Master of Business Administration",
@@ -136,10 +205,25 @@
         "duration": "2 years",
         "seats": 60,
         "fees_per_year": 88000,
-        "eligibility": "Any graduation with 50% marks + CAT/MAT/XAT score",
-        "min_percentage": 50,
+        "eligibility": "Any graduation with 50%",
         "entrance_exam": "CAT / MAT / XAT / MP-MAT",
-        "specializations": ["Marketing", "Finance", "HR", "Operations", "Business Analytics"]
+        "specializations": ["Marketing", "Finance", "HR", "Operations", "Business Analytics"],
+        "career_options": ["Business Manager", "Marketing Manager", "Finance Manager", "HR Manager"],
+        "avg_salary": "Rs. 4 to 8 LPA depending on profile",
+        "is_good_for": "students aiming for management and leadership careers"
+      },
+      {
+        "name": "Master of Computer Applications",
+        "short": "MCA",
+        "duration": "2 years",
+        "seats": 60,
+        "fees_per_year": 58000,
+        "eligibility": "BCA/B.Sc (CS/IT) with 55% + Mathematics",
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Software Engineering", "Cloud Computing", "Data Analytics"],
+        "career_options": ["Software Engineer", "Cloud Developer", "Data Analyst"],
+        "avg_salary": "Rs. 4.5 to 7 LPA",
+        "is_good_for": "students who want advanced software and IT careers"
       },
       {
         "name": "Master of Science",
@@ -147,253 +231,137 @@
         "duration": "2 years",
         "seats": 30,
         "fees_per_year": 46000,
-        "eligibility": "Relevant B.Sc with 55% marks",
-        "min_percentage": 55,
-        "entrance_exam": "Direct Admission / Merit Based",
-        "specializations": ["Physics", "Chemistry", "Mathematics", "Computer Science"]
+        "eligibility": "Relevant B.Sc with 55%",
+        "entrance_exam": "Direct admission / Merit based",
+        "specializations": ["Physics", "Chemistry", "Mathematics", "Computer Science"],
+        "career_options": ["Researcher", "Scientist", "Professor"],
+        "avg_salary": "Rs. 3 to 6 LPA",
+        "is_good_for": "students who want research, academia, or advanced science study"
       }
     ]
   },
   "important_dates": {
-    "academic_year": "2025-26",
-    "form_start_date": "March 1, 2025",
-    "form_last_date": "May 31, 2025",
+    "academic_year": "2026-27",
+    "form_start_date": "March 2026",
+    "form_last_date": "May 31, 2026",
     "application_fee": 500,
-    "entrance_exam_date": "June 15, 2025",
-    "admit_card_release": "June 8, 2025",
-    "result_declaration": "June 25, 2025",
-    "first_merit_list": "July 1, 2025",
-    "second_merit_list": "July 8, 2025",
-    "counselling_start": "July 1, 2025",
-    "counselling_end": "July 10, 2025",
-    "classes_begin": "August 1, 2025",
+    "entrance_exam_date": "January & April 2026 (JEE Mains)",
+    "admit_card_release": "As per JEE Mains schedule",
+    "result_declaration": "April/May 2026",
+    "first_merit_list": "July 2026",
+    "second_merit_list": "July 2026 (if required)",
+    "counselling_start": "June 2026",
+    "counselling_end": "July 2026",
+    "classes_begin": "August 2026",
     "exam_centers": ["Gwalior", "Bhopal", "Indore", "Jabalpur", "Ujjain"]
   },
-  "documents_required": [
-    "10th Marksheet & Certificate",
-    "12th/Graduation Marksheet & Certificate",
-    "Aadhar Card (both sides)",
-    "Passport size photographs (6 copies)",
-    "Caste/Category Certificate (if applicable)",
-    "Migration Certificate",
-    "Character Certificate from previous institution",
-    "Income Certificate (for scholarship application)",
-    "Transfer Certificate",
-    "Medical Fitness Certificate"
+  "admission_process": [
+    "Visit www.itmgoi.in and open the Online Apply form.",
+    "Fill your personal and academic details and pay the Rs.500 application fee.",
+    "For B.Tech, appear in JEE Mains and register for DTE MP / RGPV counselling.",
+    "Upload and verify documents during counselling or admission verification.",
+    "Choose ITM Gwalior and your preferred branch during choice filling.",
+    "Report to the campus, submit originals, pay the admission fee, and confirm the seat."
   ],
+  "documents_required": {
+    "mandatory": [
+      "10th Marksheet and Passing Certificate",
+      "12th Marksheet and Passing Certificate",
+      "Aadhar Card",
+      "Passport size photographs",
+      "Migration Certificate",
+      "Character Certificate",
+      "Transfer Certificate"
+    ],
+    "conditional": [
+      "Caste / Category Certificate if applicable",
+      "Income Certificate for scholarship consideration",
+      "JEE Mains Scorecard for B.Tech admission",
+      "Medical Fitness Certificate"
+    ]
+  },
   "hostel": {
     "boys_hostel": {
       "name": "ITM Boys Hostel",
       "capacity": 500,
       "fees_per_year": 68000,
-      "includes": "Mess charges included",
+      "includes": "Mess included",
       "room_types": ["2-sharing", "3-sharing", "4-sharing"],
-      "facilities": ["24/7 Security", "WiFi (50 Mbps)", "Hot Water", "Indoor Sports", "Common Room", "Laundry", "Medical Room"]
+      "facilities": ["24/7 Security", "High-speed WiFi", "Hot Water", "Indoor Sports Room", "Common Room", "Laundry", "Medical Room", "Hygienic Mess"]
     },
     "girls_hostel": {
       "name": "ITM Girls Hostel",
       "capacity": 300,
       "fees_per_year": 72000,
-      "includes": "Mess charges included",
+      "includes": "Mess included",
       "room_types": ["2-sharing", "3-sharing"],
-      "facilities": ["24/7 Security + Female Wardens", "WiFi (50 Mbps)", "Hot Water", "Indoor Sports", "Common Room", "Laundry", "Medical Room", "Salon"]
+      "facilities": ["24/7 Security with Female Wardens", "High-speed WiFi", "Hot Water", "Indoor Sports Room", "Common Room", "Laundry", "Medical Room", "Hygienic Mess"]
     },
-    "contact": "hostel@itmgwalior.ac.in",
-    "warden_phone": "+91-751-2970301"
+    "contact": "hostel@itmgoi.in",
+    "warden_phone": "+91-751-2440056"
   },
   "scholarships": [
     {
       "name": "Merit Scholarship",
-      "description": "For students with >90% marks in qualifying examination",
-      "benefit": "50% tuition fee waiver",
-      "eligibility": "More than 90% in 10+2 or qualifying exam",
-      "renewable": true,
-      "renewal_criteria": "Maintain 8.0 CGPA each semester"
+      "description": "50% fee waiver for students scoring more than 90% in qualifying exams.",
+      "benefit": "50% fee waiver",
+      "eligibility": ">90% marks and renewal with 8.0 CGPA"
     },
     {
       "name": "EWS Scholarship",
-      "description": "For economically weaker section students",
-      "benefit": "30% tuition fee waiver",
-      "eligibility": "Annual family income less than ₹2.5 lakhs",
-      "renewable": true,
-      "renewal_criteria": "Maintain 6.0 CGPA each semester"
+      "description": "Fee support for students from economically weaker sections.",
+      "benefit": "30% fee waiver",
+      "eligibility": "Family income below Rs.2.5 lakhs and renewal with 6.0 CGPA"
     },
     {
       "name": "SC/ST Scholarship",
-      "description": "Government scholarship combined with institutional discount",
-      "benefit": "Government scholarship + 25% institutional fee discount",
-      "eligibility": "SC/ST category certificate required",
-      "renewable": true,
-      "renewal_criteria": "Regular attendance and passing all subjects"
+      "description": "Government scholarship plus institutional concession for SC/ST students.",
+      "benefit": "Govt scholarship + 25% institutional discount",
+      "eligibility": "Valid SC/ST certificate as per government rules"
     },
     {
-      "name": "Sports Quota Scholarship",
-      "description": "For state or national level athletes",
-      "benefit": "20% tuition fee waiver",
-      "eligibility": "State or national level participation certificate",
-      "renewable": true,
-      "renewal_criteria": "Continue sports participation and maintain 6.5 CGPA"
+      "name": "Sports Scholarship",
+      "description": "Fee support for students with state or national level sports achievements.",
+      "benefit": "20% fee waiver",
+      "eligibility": "State or national level athlete"
     }
-  ],
-  "admission_process": [
-    "Visit www.itmgwalior.ac.in and click on 'Apply Now'",
-    "Fill the online application form with personal and academic details",
-    "Upload required documents (marksheets, Aadhar, photograph)",
-    "Pay application fee of ₹500 online",
-    "Download admit card for entrance exam (if applicable)",
-    "Appear for JEE Mains / RGPV DTE MP counselling",
-    "Check result and merit list on college website",
-    "Attend counselling session with original documents",
-    "Pay admission fee and confirm your seat",
-    "Collect admission letter and begin classes on August 1, 2025"
-  ],
-  "facilities": [
-    "Central Library with 50,000+ books and e-resources",
-    "Modern Computer Labs (400+ workstations)",
-    "Research & Innovation Center",
-    "Sports Complex (Cricket ground, Football field, Basketball court, Badminton courts)",
-    "Cafeteria & Food Court",
-    "Medical Center",
-    "Auditorium (800 seating capacity)",
-    "Smart Classrooms",
-    "WiFi Campus",
-    "Industry Partnership Cell",
-    "Placement Cell (300+ companies visiting annually)"
   ],
   "placement": {
-    "placement_rate": "90%",
-    "highest_package": "₹18 LPA",
-    "average_package": "₹5.5 LPA",
-    "top_recruiters": ["TCS", "Infosys", "Wipro", "HCL", "Accenture", "Cognizant", "Tech Mahindra", "IBM", "Capgemini", "HDFC Bank"],
-    "placement_cell_email": "placement@itmgwalior.ac.in"
-  },
-  "placements": {
-    "overall_percentage": "85%",
-    "average_package_lpa": 4.2,
-    "highest_package_lpa": 18.5,
-    "year": "2023-24",
-    "top_recruiters": [
-      {"name": "TCS", "roles": ["Systems Engineer", "Developer"], "package_lpa": 3.6},
-      {"name": "Infosys", "roles": ["Associate"], "package_lpa": 3.8},
-      {"name": "Wipro", "roles": ["Project Engineer"], "package_lpa": 3.5},
-      {"name": "HCL Technologies", "roles": ["Technical Support"], "package_lpa": 3.4},
-      {"name": "Capgemini", "roles": ["Analyst"], "package_lpa": 4.0},
-      {"name": "Tech Mahindra", "roles": ["Software Engineer"], "package_lpa": 3.7},
-      {"name": "Cognizant", "roles": ["Programmer Analyst"], "package_lpa": 4.0},
-      {"name": "Accenture", "roles": ["Associate SE"], "package_lpa": 4.5},
-      {"name": "IBM", "roles": ["Associate Developer"], "package_lpa": 5.2},
-      {"name": "Deloitte", "roles": ["Business Analyst"], "package_lpa": 6.0}
+    "placement_rate": "90%+",
+    "average_package": "Rs. 5.5 LPA",
+    "highest_package": "Rs. 18 LPA",
+    "companies_count": "300+",
+    "tap_email": "arpit.chauhan@itmuniversity.ac.in",
+    "tap_cell_head": {
+      "name": "Mr. Arpit Singh Chauhan",
+      "phone": "+91-9691973919",
+      "email": "arpit.chauhan@itmuniversity.ac.in"
+    },
+    "internship_record": "5 Lakh+ internships in 3 years",
+    "eduSkills_rank": "#35 All India 2024",
+    "awards": [
+      "Microsoft Learn Centre of Excellence (2024-2025)",
+      "Best Institute for Training & Placements - Indian Education Excellence Awards 2022",
+      "World Book of Records - 5 Lakh Internships in 3 Years",
+      "Best Placement Award - National Technical Excellence Education Summit 2014"
     ],
-    "branch_wise": {
-      "B.Tech CS": "92% placed",
-      "B.Tech EC": "78% placed",
-      "B.Tech ME": "72% placed",
-      "B.Tech CE": "68% placed",
-      "MCA": "88% placed",
-      "MBA": "80% placed"
+    "recruiter_categories": {
+      "IT_software": ["TCS", "Infosys", "Wipro", "HCL", "Tech Mahindra", "Cognizant", "Accenture", "IBM", "Capgemini", "Mphasis"],
+      "tech_companies": ["FedEx", "Xiaomi", "Microsoft", "AWS"],
+      "banking_finance": ["ICICI Bank", "HDFC Bank", "Bajaj FinServ", "VISA"],
+      "core_engineering": ["Thermax Limited", "VISA Steel", "Manufacturing and infrastructure firms"]
+    },
+    "top_recruiters": {
+      "IT_software": ["TCS", "Infosys", "Wipro", "HCL", "Tech Mahindra", "Cognizant", "Accenture", "IBM", "Capgemini", "Mphasis"],
+      "tech_companies": ["FedEx", "Xiaomi", "Microsoft", "AWS"],
+      "banking_finance": ["ICICI Bank", "HDFC Bank", "Bajaj FinServ", "VISA"],
+      "core_engineering": ["Thermax Limited", "VISA Steel", "Manufacturing and infrastructure firms"]
     }
   },
-  "documents_detailed": {
-    "mandatory": [
-      "10th marksheet (original + 2 photocopies)",
-      "12th marksheet (original + 2 photocopies)",
-      "School Leaving / Transfer Certificate",
-      "Aadhar Card (original + 2 photocopies)",
-      "4 passport-size photographs (recent, white background)",
-      "Migration Certificate (if from other board)",
-      "Character Certificate from last institution"
-    ],
-    "conditional": [
-      "Caste Certificate (SC/ST/OBC ke liye)",
-      "Income Certificate (EWS/scholarship ke liye)",
-      "Sports Certificate (sports quota ke liye)",
-      "GATE scorecard (M.Tech ke liye)",
-      "CAT/MAT scorecard (MBA ke liye)",
-      "Disability Certificate (if applicable)"
-    ],
-    "notes": "All documents self-attested honaye chahiye. Original documents verification ke baad wapas kar diye jayenge."
+  "facilities": {
+    "academic": ["Central Library with books, journals and digital access", "Well-equipped computer labs", "Departmental laboratories", "WiFi-enabled campus", "Auditorium and seminar halls"],
+    "sports": ["Cricket ground", "Football field", "Basketball court", "Badminton court", "Indoor sports room"],
+    "other": ["Cafeteria", "Medical room", "Transport support", "Hostel facilities", "Security and surveillance"]
   },
-  "important_dates_2025_26": {
-    "form_start": "March 1, 2025",
-    "form_last_date": "May 31, 2025",
-    "application_fee": "₹500 (non-refundable)",
-    "admit_card": "June 8, 2025",
-    "entrance_exam": "June 15, 2025",
-    "result_date": "June 25, 2025",
-    "first_merit_list": "July 1, 2025",
-    "counselling_start": "July 1, 2025",
-    "counselling_end": "July 10, 2025",
-    "fee_payment_deadline": "July 15, 2025",
-    "classes_begin": "August 1, 2025",
-    "lateral_entry_last_date": "June 15, 2025"
-  },
-  "hostel_detailed": {
-    "boys": {
-      "capacity": 400,
-      "fee_per_year": 55000,
-      "facilities": ["AC rooms available", "WiFi", "24x7 security", "Mess", "RO water", "Laundry", "Study room"]
-    },
-    "girls": {
-      "capacity": 200,
-      "fee_per_year": 58000,
-      "facilities": ["AC rooms", "WiFi", "24x7 CCTV", "Warden", "Mess", "RO water", "Common room"]
-    },
-    "mess_fee_per_month": 3500,
-    "availability": "First come first served basis"
-  },
-  "scholarships_detailed": {
-    "merit_based": {
-      "criteria": "12th mein 90% ya usse zyada",
-      "benefit": "25% fee waiver"
-    },
-    "ews": {
-      "criteria": "Family income < ₹8 lakh/year",
-      "benefit": "20% fee waiver + govt scheme applicable"
-    },
-    "sc_st": {
-      "criteria": "Valid caste certificate required",
-      "benefit": "MP Govt scholarship — full tuition in many cases"
-    },
-    "sports_quota": {
-      "criteria": "State/National level participation",
-      "benefit": "15% fee waiver"
-    },
-    "minority": {
-      "criteria": "Minority community + income proof",
-      "benefit": "Pre-matric/post-matric govt scholarship"
-    }
-  },
-  "campus": {
-    "area_acres": 25,
-    "naac_grade": "B+",
-    "affiliated_to": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal",
-    "ugc_approved": true,
-    "established": 1999,
-    "labs": ["Computer lab x6", "Electronics lab", "Mechanical workshop", "Civil survey lab", "Chemistry lab", "Physics lab", "IoT lab", "AI/ML lab"],
-    "library_books": 25000,
-    "wifi": "Campus-wide Wi-Fi",
-    "sports": ["Cricket ground", "Basketball court", "Volleyball", "Badminton", "Table tennis", "Football ground", "Gym"],
-    "transport": {
-      "routes": ["Gwalior city bus", "Morena route", "Bhind route"],
-      "fee_per_year": 12000
-    }
-  },
-  "anti_ragging": {
-    "helpline": "1800-180-5522 (toll free)",
-    "college_committee": "+91-751-2970300 ext 210",
-    "email": "antiragging@itmgwalior.ac.in",
-    "policy": "Zero tolerance. FIR + rustication for violators."
-  },
-  "refund_policy": {
-    "before_july_15": "Full fee refund minus ₹1000 processing",
-    "july_15_to_aug_1": "75% refund",
-    "after_aug_1": "No refund. TC within 30 days."
-  },
-  "lateral_entry": {
-    "eligibility": "Diploma in relevant branch with 60%",
-    "direct_admission_to": "2nd year B.Tech",
-    "seats": "10% supernumerary seats",
-    "process": "DTE MP counselling ya direct application",
-    "last_date": "June 15, 2025"
-  }
+  "clubs_cells": ["Performing Arts Club (PAC)", "IEEE Student Chapter", "NSS Cell", "UBA Cell", "Women Empowerment Cell", "Sports Cell", "Coding Club", "AWS Cloud Club", "Alumni Network"]
 }

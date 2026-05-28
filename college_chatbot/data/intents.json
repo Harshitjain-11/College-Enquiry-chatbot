@@ -5,6 +5,7 @@
       "patterns": [
         "hi",
         "hello",
+        "hello bhai",
         "namaste",
         "good morning",
         "good afternoon",
@@ -19,12 +20,17 @@
         "howdy",
         "greetings",
         "sup",
-        "yo"
+        "yo",
+        "hello there",
+        "hi there",
+        "hiya",
+        "good day",
+        "hey bot"
       ],
       "responses": [
         "Hello! Welcome to Institute of Technology & Management, Gwalior. How can I help you today?",
-        "Hi there! I'm the ITM Gwalior chatbot. Ask me anything about admissions, courses, fees, and more!",
-        "Namaste! Welcome to ITM Gwalior. I'm here to help you with your enquiries."
+        "Hi there! I'm the ITM Gwalior chatbot. Ask me anything about admissions, courses, fees, placements and more!",
+        "Namaste! Welcome to ITM Gwalior. I'm here to help you with your enquiries. What would you like to know?"
       ]
     },
     {
@@ -46,12 +52,54 @@
         "ok that's it",
         "dhanyawad",
         "shukriya",
-        "alvida"
+        "alvida",
+        "theek hai",
+        "bas itna hi",
+        "done",
+        "nothing else",
+        "that's it",
+        "all good"
       ],
       "responses": [
-        "Thank you for contacting Institute of Technology & Management, Gwalior! Feel free to reach out anytime. Good luck!",
-        "Goodbye! Best of luck with your admission. Visit us at ITM Gwalior!",
-        "Thanks for chatting! If you have more questions, we're always here. Have a great day!"
+        "Thank you for contacting ITM Gwalior! Feel free to reach out anytime. Good luck with your admission!",
+        "Goodbye! Best of luck. Visit us at www.itmgoi.in or call +91-7773005065 for more info!",
+        "Thanks for chatting! If you have more questions, we're always here. Have a great day! 🎓"
+      ]
+    },
+    {
+      "tag": "about_college",
+      "patterns": [
+        "tell me about the college",
+        "tell me about your college",
+        "what is ITM",
+        "about ITM gwalior",
+        "college ke baare mein batao",
+        "ITM gwalior kya hai",
+        "college ki history",
+        "when was it established",
+        "kaab bana tha clg",
+        "NAAC grade kya hai",
+        "accreditation",
+        "affiliation",
+        "rgpv affiliated",
+        "ITM ki ranking",
+        "college ranking",
+        "is it a good college",
+        "acha college hai kya",
+        "college kaisa hai",
+        "ITM goi",
+        "college information",
+        "institute details",
+        "about institute",
+        "naac accredited",
+        "aicte approved",
+        "college ki history kya hai",
+        "29 years",
+        "established in",
+        "college founded"
+      ],
+      "responses": [
+        "🎓 Institute of Technology & Management (ITM) Gwalior:\n\n📍 Established: 1997 (29+ years of excellence)\n🏆 NAAC Grade: 'A' (CGPA 3.01, valid till Nov 2030)\n🎖️ NBA Accredited\n📋 AICTE Approved & RGPV Bhopal Affiliated\n🌐 Website: www.itmgoi.in\n\n✨ Key Highlights:\n• Microsoft Learn – Centre of Excellence\n• Ranked #35 All India (EduSkills Virtual Internship 2024)\n• Best Placement Award – National Technical Excellence 2014\n• 300+ companies visit for placements annually\n• AWS Academy Member Institution\n• 5 Lakh+ Internships in 3 years (World Book of Records)\n\nITM Gwalior is a premier NAAC 'A' grade institution offering engineering & management programs with excellent placement support!"
       ]
     },
     {
@@ -73,10 +121,19 @@
         "enrollment process",
         "how to enroll",
         "registration process",
-        "how to register"
+        "how to register",
+        "apply online",
+        "online apply",
+        "admission form kahan milega",
+        "form kaise bhare",
+        "application form",
+        "admission 2026",
+        "2026 admission",
+        "new admission",
+        "fresh admission"
       ],
       "responses": [
-        "The admission process at ITM Gwalior involves: 1) Fill online application form at www.itmgwalior.ac.in, 2) Upload required documents, 3) Pay application fee of ₹500, 4) Appear for JEE Mains / RGPV DTE MP counselling (for B.Tech), 5) Attend counselling session, 6) Pay admission fee and confirm seat."
+        "📋 Admission Process at ITM Gwalior:\n\n1️⃣ Visit www.itmgoi.in → Click 'Online Apply'\n2️⃣ Fill the application form with personal & academic details\n3️⃣ Upload documents (marksheets, Aadhar, photo)\n4️⃣ Pay application fee of ₹500 online\n5️⃣ For B.Tech: Appear in JEE Mains & participate in RGPV DTE MP counselling\n6️⃣ For BCA/BBA/B.Com/MBA: Direct admission on merit basis\n7️⃣ Attend counselling with original documents\n8️⃣ Pay admission fee & confirm your seat\n9️⃣ Classes begin from August 2026\n\n📞 Admission Helpline: +91-7773005065 / +91-7773001624\n📧 Email: admission@itmgoi.in\n🌐 Apply: http://itmgoi.in/OnlineApply_ITMGOI"
       ]
     },
     {
@@ -94,14 +151,58 @@
         "courses?",
         "programs offered",
         "tell me about courses",
-        "corse list",
-        "what can I do",
         "available courses",
         "all courses",
-        "departments"
+        "departments",
+        "branches",
+        "kaunsi branches hain",
+        "engineering branches",
+        "sare course batao",
+        "btech branches",
+        "it department",
+        "computer science",
+        "information technology"
       ],
       "responses": [
-        "ITM Gwalior offers UG and PG programs. UG: B.Tech (CS, EC, ME, CE) affiliated to RGPV Bhopal, BCA, BBA, B.Sc, B.Com. PG: M.Tech, MCA, MBA, M.Sc. Would you like details about any specific course?"
+        "🎓 Courses Offered at ITM Gwalior (RGPV Affiliated):\n\n🔧 B.Tech (4 years) — RGPV Bhopal Affiliated:\n  • B.Tech CSE (Computer Science & Engineering)\n  • B.Tech IT (Information Technology) ← NEW!\n  • B.Tech ECE (Electronics & Communication Engineering)\n  • B.Tech ME (Mechanical Engineering)\n  • B.Tech Civil Engineering\n\n💻 UG Management & Science:\n  • BCA (3 years)\n  • BBA (3 years)\n  • B.Sc (3 years)\n  • B.Com (3 years)\n\n📚 Postgraduate:\n  • M.Tech (2 years)\n  • MBA (2 years)\n  • MCA (2 years)\n  • M.Sc (2 years)\n\nAsk me about any specific course for fees, eligibility & career scope!"
+      ]
+    },
+    {
+      "tag": "specializations",
+      "patterns": [
+        "aiml course hai kya",
+        "kya tumhare clg main aiml hai",
+        "btech cs aiml",
+        "btech aiml",
+        "artificial intelligence",
+        "machine learning course",
+        "data science course",
+        "cybersecurity course",
+        "cloud computing",
+        "iot course",
+        "specialization kya hai",
+        "btech specialization",
+        "cse specialization",
+        "cs aiml",
+        "has your college have btech cs-aiml",
+        "ai course",
+        "data analytics",
+        "ds",
+        "ds branch",
+        "career in btech specialization",
+        "btech cs specializations",
+        "it specializations",
+        "what specializations are available",
+        "which specialization should I choose",
+        "vlsi",
+        "embedded systems",
+        "btech it specialization",
+        "aws courses",
+        "microsoft azure",
+        "cloud course"
+      ],
+      "responses": [
+        "🤖 B.Tech Specializations at ITM Gwalior:\n\n💻 B.Tech CSE Specializations:\n  • CS-AIML (Artificial Intelligence & Machine Learning) ✅\n  • CS-DS (Data Science)\n  • CS-Cybersecurity\n  • CS-IoT (Internet of Things)\n  • CS-Cloud Computing (AWS Academy Partner)\n\n📡 B.Tech IT Specializations:\n  • IT-Web Technologies\n  • IT-Mobile App Development\n  • IT-Database Management\n\n📻 B.Tech ECE Specializations:\n  • VLSI Design\n  • Embedded Systems\n  • Signal Processing\n\n⚙️ B.Tech ME: Automobile, Thermal, Manufacturing\n🏗️ B.Tech Civil: Structural, Environmental Engineering\n\n🌟 ITM is Microsoft Centre of Excellence & AWS Academy Member — industry-level training included!\n\n💰 B.Tech CSE (with AIML): ₹87,000/year\nAsk about eligibility or fee details!"
       ]
     },
     {
@@ -123,10 +224,17 @@
         "who can apply",
         "am I eligible",
         "cutoff percentage",
-        "minimum eligibility"
+        "minimum eligibility",
+        "jee mains chahiye kya",
+        "bina jee ke admission",
+        "direct admission milega kya",
+        "50 percent mein admission",
+        "60 percent",
+        "pcm chahiye kya",
+        "kya main apply kar sakta hoon"
       ],
       "responses": [
-        "Eligibility varies by course. B.Tech (RGPV affiliated) requires 60% in PCM in 12th + JEE Mains score. BCA requires 55% in 12th with Maths. BBA requires 50% in any stream in 12th. M.Tech requires relevant B.Tech with 60%. MBA requires graduation with 50% + MAT/CAT score. Which course eligibility would you like to know?"
+        "📋 Eligibility Criteria at ITM Gwalior:\n\n🔧 B.Tech (CSE/IT/ECE/ME/Civil):\n  • 60% in PCM (Physics, Chemistry, Maths) in 12th\n  • JEE Mains score + RGPV DTE MP Counselling\n\n💻 BCA:\n  • 55% in 12th with Mathematics\n  • Direct admission on merit\n\n📊 BBA / B.Com:\n  • 50% in 12th (any stream)\n  • Direct admission on merit\n\n🔬 B.Sc:\n  • 55% in 12th (Science stream)\n\n📚 M.Tech:\n  • B.Tech/B.E. with 60% + GATE score (preferred)\n\n💼 MBA:\n  • Graduation with 50% + CAT/MAT/XAT/MP-MAT\n\n🖥️ MCA:\n  • BCA/B.Sc (CS/IT) with 55% + Maths in qualifying exam\n\nWhich course eligibility would you like to know more about?"
       ]
     },
     {
@@ -141,18 +249,283 @@
         "what is the fee",
         "tuition fee",
         "total fees",
-        "fess structure",
-        "charges",
         "fee details",
         "kitne paise lagte hain",
         "fee kya hogi",
         "annual fee",
         "semester fee",
         "fee?",
-        "cost of course"
+        "cost of course",
+        "btech fees",
+        "mba fees",
+        "bca fees",
+        "total fee for 4 years",
+        "4 saal ki fees kitni hogi",
+        "fees kam hain kya",
+        "affordable hai kya",
+        "fee concession"
       ],
       "responses": [
-        "Fee structure at ITM Gwalior: B.Tech CS - ₹87,000/year, B.Tech EC/ME/CE - ₹80,000-84,000/year, BCA - ₹48,000/year, BBA - ₹42,000/year, B.Sc - ₹36,000/year, B.Com - ₹32,000/year, M.Tech - ₹92,000/year, MCA - ₹58,000/year, MBA - ₹88,000/year. Scholarships available for merit students!"
+        "💰 Fee Structure at ITM Gwalior (per year):\n\n🔧 B.Tech Programs:\n  • B.Tech CSE / CS-AIML: ₹87,000/year\n  • B.Tech IT: ₹85,000/year\n  • B.Tech ECE: ₹84,000/year\n  • B.Tech ME: ₹82,000/year\n  • B.Tech Civil: ₹80,000/year\n\n💻 UG Programs:\n  • BCA: ₹48,000/year\n  • BBA: ₹42,000/year\n  • B.Sc: ₹36,000/year\n  • B.Com: ₹32,000/year\n\n📚 PG Programs:\n  • M.Tech: ₹92,000/year\n  • MBA: ₹88,000/year\n  • MCA: ₹58,000/year\n  • M.Sc: ₹46,000/year\n\n💡 Scholarships available! Students with >90% marks get 50% tuition fee waiver!\n📞 For exact fee details: +91-7773005065"
+      ]
+    },
+    {
+      "tag": "placement",
+      "patterns": [
+        "placement kya hai",
+        "placement ratio kya hai",
+        "what is your placement",
+        "placement statistics",
+        "placement record",
+        "placement percentage",
+        "kitne percent placement hai",
+        "placement rate",
+        "job milti hai kya",
+        "after college job",
+        "placement hoti hai kya",
+        "good placement hai kya",
+        "placement details",
+        "career opportunities",
+        "job after btech",
+        "salary package",
+        "average package",
+        "highest package",
+        "kitna package milta hai",
+        "lpa kya milta hai",
+        "placement 2024",
+        "placement 2023",
+        "campus placement",
+        "off campus placement",
+        "100 percent placement",
+        "placement cell",
+        "tap cell",
+        "how many students get placed",
+        "placement driven college",
+        "salary after btech",
+        "job prospects"
+      ],
+      "responses": [
+        "🏆 Placement Statistics at ITM Gwalior:\n\n📊 Key Numbers:\n  • Placement Rate: 90%+\n  • Average Package: ₹5.5 LPA\n  • Highest Package: ₹18 LPA\n  • 300+ Companies visit annually\n\n🏢 Top Recruiters (Companies that visit ITM):\n  TCS, Infosys, Wipro, Cognizant, IBM, HCL,\n  Accenture, Tech Mahindra, Capgemini, FedEx,\n  Mphasis, ICICI Bank, Xiaomi, VISA Steel,\n  Thermax Limited, Bajaj FinServ & many more!\n\n🎯 TAP Cell (Training, Augmentation & Placement):\n  • Pre-placement training for every student\n  • Industry expert talks & workshops\n  • Mandatory 45-day summer internship\n  • One-on-one interview counselling\n  • AWS & Microsoft certified training programs\n\n📧 TAP Cell: placement@itmgoi.in\n\nBest Placement Award winner — National Technical Excellence Education Summit!"
+      ]
+    },
+    {
+      "tag": "companies_recruiters",
+      "patterns": [
+        "kon kon si company aati hai",
+        "which companies visit",
+        "tumhare clg main kon si company aati hai",
+        "recruiters list",
+        "top companies",
+        "company list",
+        "campus recruitment",
+        "what are the companies that had visiting in your college",
+        "which companies hire from ITM",
+        "TCS aata hai kya",
+        "Infosys aata hai",
+        "company names",
+        "hiring companies",
+        "companies that recruit",
+        "MNC aati hai kya",
+        "kaunsi MNC hai",
+        "placement companies",
+        "top recruiters",
+        "google microsoft apple",
+        "product companies",
+        "service companies",
+        "software companies jo aati hai",
+        "core companies"
+      ],
+      "responses": [
+        "🏢 Companies Recruiting from ITM Gwalior:\n\n💻 IT & Software:\n  • TCS, Infosys, Wipro, HCL, Tech Mahindra\n  • IBM, Capgemini, Mphasis, Cognizant, Accenture\n\n🌐 Tech Giants & Startups:\n  • Xiaomi, FedEx (Tech roles)\n  • AWS & Microsoft partner programs\n\n🏦 Banking & Finance:\n  • ICICI Bank, Bajaj FinServ\n  • HDFC Bank, Axis Bank\n\n🏭 Core Engineering:\n  • VISA Steel, Thermax Limited\n  • Various manufacturing & infrastructure firms\n\n📊 Stats:\n  • 300+ companies visit annually\n  • Bulk hiring by TCS, Wipro, Cognizant every year\n  • Highest package: ₹18 LPA\n  • Average: ₹5.5 LPA\n\nWant to know more about placement process or eligibility?"
+      ]
+    },
+    {
+      "tag": "campus_timing",
+      "patterns": [
+        "college ki timing kya hai",
+        "college timing",
+        "college kab khulta hai",
+        "office timing",
+        "admission office timing",
+        "clg timing kya rehti hai",
+        "college kab band hota hai",
+        "what time does college open",
+        "working hours",
+        "office hours",
+        "kab aa sakta hoon",
+        "saturday ko khula hai kya",
+        "sunday ko band hai kya",
+        "visiting hours",
+        "campus timing",
+        "classes timing",
+        "lecture timing",
+        "when is the college open",
+        "9 to 5",
+        "college schedule"
+      ],
+      "responses": [
+        "⏰ ITM Gwalior Timings:\n\n🏫 College & Office Hours:\n  • Monday to Saturday: 9:00 AM – 5:00 PM\n  • Sunday: Closed\n\n📚 Academic Class Timings:\n  • Morning Session: 9:00 AM – 1:00 PM\n  • Afternoon Session: 1:30 PM – 5:00 PM\n  • Lunch Break: 1:00 PM – 1:30 PM\n\n🏢 Admission Office:\n  • Monday to Saturday: 9:00 AM – 5:00 PM\n  • 📞 Call: +91-7773005065\n\n📍 Address: ITM Campus, Opp. Sithouli Railway Station,\nNH-75 Sithouli, Jhansi Road, Gwalior - 475001, MP"
+      ]
+    },
+    {
+      "tag": "counselling_info",
+      "patterns": [
+        "counselling kese hoti hai",
+        "counselling kya hoti hai",
+        "counselling ke baare mein batao",
+        "rgpv counselling",
+        "dte mp counselling",
+        "btech counselling process",
+        "counselling mein kya hota hai",
+        "counselling kab hoti hai",
+        "mp counselling",
+        "madhya pradesh counselling",
+        "jee ke baad kya karna hai",
+        "jee result ke baad",
+        "counselling ke liye kya chahiye",
+        "counselling round",
+        "first round second round counselling",
+        "seat allotment",
+        "college choice filling",
+        "counselling process for btech",
+        "how does mp counselling work",
+        "dte counselling",
+        "how to fill college choices",
+        "merit list counselling"
+      ],
+      "responses": [
+        "📋 RGPV / DTE MP B.Tech Counselling Process:\n\n🎯 Step-by-Step Guide:\n\n1️⃣ JEE Mains Score Required\n   • Minimum qualifying percentile set by RGPV/DTE MP\n\n2️⃣ Online Registration at DTE MP Portal\n   • Website: dte.mponline.gov.in\n   • Register with JEE Roll No. & personal details\n\n3️⃣ Document Verification\n   • Submit 10th, 12th marksheets, category certificate\n\n4️⃣ Online Choice Filling\n   • Select college preferences (add ITM Gwalior!)\n   • Choose branch preferences\n\n5️⃣ Seat Allotment (Merit Based)\n   • Multiple rounds: Round 1, Round 2, Mop-up Round\n   • Based on JEE rank + category\n\n6️⃣ Report to ITM Gwalior\n   • Pay fees & complete admission formalities\n   • Bring all original documents\n\n📞 Need counselling help? Call: +91-7773005065\n🌐 Apply directly: http://itmgoi.in/OnlineApply_ITMGOI"
+      ]
+    },
+    {
+      "tag": "course_recommendation",
+      "patterns": [
+        "konsa course loon",
+        "which course is best for me",
+        "kya karna chahiye 12th ke baad",
+        "suggest me a course",
+        "cse vs it konsa better",
+        "btech ya bca",
+        "best branch konsi hai",
+        "mujhe computer mein interest hai",
+        "software engineer banna chahta hoon",
+        "maths mein weak hoon konsa loon",
+        "business karna chahta hoon",
+        "data scientist banana chahta hoon",
+        "game developer",
+        "scope kisme zyada hai",
+        "future kiska better hai",
+        "I like coding",
+        "I like management",
+        "I want hardware course",
+        "I want construction career",
+        "I want app development",
+        "computer science leni hai",
+        "information technology leni hai",
+        "commerce student कौन सा course",
+        "science student best course",
+        "engineering branch suggestion"
+      ],
+      "responses": [
+        "🎯 Course Recommendation Guide:\n\n• Coding, software, AI, data, security -> B.Tech CSE\n• Web/app development, IT support -> B.Tech IT or BCA\n• Hardware, electronics, telecom -> B.Tech ECE\n• Machines, production, automobiles -> B.Tech ME\n• Civil works, construction, infrastructure -> B.Tech Civil\n• Business, management, entrepreneurship -> BBA or MBA\n\nIf you share your interest, I can suggest the best branch for you."
+      ]
+    },
+    {
+      "tag": "course_details",
+      "patterns": [
+        "btech cse ke baare mein batao",
+        "tell me about btech it",
+        "mba full details",
+        "bca kya hota hai",
+        "ece mein kya padhate hain",
+        "mechanical engineering detail",
+        "civil engineering scope",
+        "mca kya hai",
+        "bba full information",
+        "mtech details",
+        "course detail chahiye",
+        "btech course detail",
+        "branch detail",
+        "program details",
+        "course syllabus info",
+        "course duration kya hai",
+        "seat kitni hai",
+        "eligibility for this course",
+        "entrance exam for this course",
+        "specializations kya hain",
+        "career options kya hain",
+        "fees per year",
+        "course ki puri jankari",
+        "tell me course details",
+        "branch wise details"
+      ],
+      "responses": [
+        "📘 Course details are available for every program at ITM Gwalior. Ask me a specific course like B.Tech CSE, B.Tech IT, BCA, MBA, MCA, or M.Tech and I’ll give you fees, eligibility, entrance exam, specializations, career options, and seats."
+      ]
+    },
+    {
+      "tag": "career_scope",
+      "patterns": [
+        "career scope kya hai",
+        "btech ke baad kya karein",
+        "job opportunities after cse",
+        "scope of aiml",
+        "data science ka future",
+        "ece ke baad kya",
+        "mechanical ke baad job",
+        "government job milegi kya",
+        "gate exam",
+        "upsc kar sakte hain",
+        "higher studies options",
+        "ms abroad kar sakte hain",
+        "after btech what to do",
+        "salary kitni milegi",
+        "career after bca",
+        "career after mba",
+        "job scope after civil",
+        "job scope after it",
+        "future after btech",
+        "what can I do after graduation",
+        "government exams after engineering",
+        "psu jobs",
+        "software jobs",
+        "engineering career options"
+      ],
+      "responses": [
+        "🚀 Career scope is strong for ITM Gwalior students across engineering, management, computer applications, and science. Ask me for a specific branch and I’ll tell you job roles, salary range, govt options, and higher studies paths."
+      ]
+    },
+    {
+      "tag": "total_branches",
+      "patterns": [
+        "kitni branches hain",
+        "how many branches",
+        "total courses kitne hain",
+        "kitni specialization hai",
+        "sari branches batao",
+        "complete course list",
+        "all programs",
+        "kitne departments hain",
+        "engineering mein kitni branch",
+        "total specializations available",
+        "programs list",
+        "branch list",
+        "available departments",
+        "course count",
+        "how many programs are there",
+        "all courses in college",
+        "btech branches count",
+        "specialization count",
+        "complete programs list",
+        "all degree programs",
+        "UG and PG courses",
+        "engineering branches list",
+        "sare course ka naam",
+        "course list full",
+        "total branches in itm"
+      ],
+      "responses": [
+        "📚 ITM Gwalior offers 5 B.Tech branches, 19+ engineering specializations, and multiple UG/PG programs including BCA, BBA, B.Sc, B.Com, M.Tech, MBA, MCA, and M.Sc. Ask me for a branch-wise list or course details."
       ]
     },
     {
@@ -170,14 +543,15 @@
         "when to apply by",
         "application close date",
         "form submission deadline",
-        "admit card date",
         "last date for registration",
         "kab tak apply kar sakte hain",
         "deadline kya hai",
-        "form kab band hoga"
+        "form kab band hoga",
+        "admission 2026 last date",
+        "2026 form last date"
       ],
       "responses": [
-        "Important dates for 2025-26 admissions: Form start date: March 1, 2025. Form last date: May 31, 2025. Entrance exam: June 15, 2025. Result declaration: June 25, 2025. Counselling: July 1-10, 2025. Classes begin: August 1, 2025."
+        "📅 Important Dates for 2026 Admissions at ITM Gwalior:\n\n  • Online Application Start: March 2026\n  • Application Last Date: May 31, 2026\n  • Application Fee: ₹500 (online)\n  • JEE Mains: January & April sessions\n  • RGPV DTE MP Counselling: June–July 2026\n  • Classes Begin: August 2026\n\n⚠️ Don't wait for last date! Apply early to secure your seat.\n\n🌐 Apply Now: http://itmgoi.in/OnlineApply_ITMGOI\n📞 Call: +91-7773005065"
       ]
     },
     {
@@ -194,15 +568,17 @@
         "what to bring for admission",
         "document kya lagenge",
         "papers for admission",
-        "documents chahiye",
         "docoments needed",
-        "admit card requirements",
         "paperwork needed",
         "what certificates are needed",
-        "certificates required"
+        "certificates required",
+        "original documents",
+        "attested documents",
+        "documents at counselling",
+        "kya kya documents chahiye"
       ],
       "responses": [
-        "Documents required for admission: 1) 10th Marksheet & Certificate, 2) 12th/Graduation Marksheet & Certificate, 3) Aadhar Card (both sides), 4) Passport size photographs (6 copies), 5) Caste/Category Certificate (if applicable), 6) Migration Certificate, 7) Character Certificate, 8) Income Certificate (for scholarship), 9) Transfer Certificate. All documents must be self-attested."
+        "📄 Documents Required for Admission at ITM Gwalior:\n\n✅ Mandatory Documents:\n1. 10th Marksheet & Passing Certificate\n2. 12th Marksheet & Passing Certificate\n3. Aadhar Card (both sides)\n4. Passport size photographs (6 copies)\n5. Migration Certificate (from previous institution)\n6. Character Certificate\n7. Transfer Certificate\n\n📋 If Applicable:\n8. Caste/Category Certificate (SC/ST/OBC)\n9. Income Certificate (for scholarship)\n10. JEE Mains Scorecard (for B.Tech)\n11. Medical Fitness Certificate\n\n⚠️ Important: All documents must be self-attested.\nBring ORIGINALS + 2 sets of photocopies.\n\n📞 Questions? Call: +91-7773005065"
       ]
     },
     {
@@ -221,13 +597,20 @@
         "accommodation for students",
         "hostel facilities",
         "stay on campus",
-        "on campus living",
         "hostel mein rehna hai",
         "hostel details",
-        "hostel charges"
+        "hostel charges",
+        "hostel food",
+        "mess facility",
+        "hostel wifi",
+        "hostel rooms",
+        "hostel registration",
+        "hostel allotment",
+        "out of gwalior hoon hostel chahiye",
+        "hostel security"
       ],
       "responses": [
-        "ITM Gwalior has excellent hostel facilities. Boys Hostel: Capacity 500 students, Fee ₹68,000/year (with mess). Girls Hostel: Capacity 300 students, Fee ₹72,000/year (with mess). Facilities include: 24/7 security, WiFi, hot water, furnished rooms (2-4 sharing), common room, indoor sports, medical room. Contact: hostel@itmgwalior.ac.in"
+        "🏠 Hostel Facilities at ITM Gwalior:\n\n👦 Boys Hostel:\n  • Capacity: 500 students\n  • Fee: ₹68,000/year (mess included)\n  • Room Types: 2-sharing, 3-sharing, 4-sharing\n\n👧 Girls Hostel:\n  • Capacity: 300 students\n  • Fee: ₹72,000/year (mess included)\n  • Female wardens 24/7\n  • Room Types: 2-sharing, 3-sharing\n\n🏋️ Common Facilities (Both Hostels):\n  ✅ 24/7 Security\n  ✅ High-speed WiFi\n  ✅ Hot water supply\n  ✅ Indoor sports room\n  ✅ Common room & TV\n  ✅ Laundry facility\n  ✅ Medical room\n  ✅ Hygienic Mess (vegetarian & non-veg options)\n\n📧 Hostel: hostel@itmgoi.in\n📞 Warden: +91-751-2440056"
       ]
     },
     {
@@ -249,10 +632,17 @@
         "how to contact",
         "reach out",
         "get in touch",
-        "contact karna hai"
+        "contact karna hai",
+        "admission office contact",
+        "director contact",
+        "principal contact",
+        "tap cell contact",
+        "placement cell contact",
+        "kahan hai college",
+        "gwalior mein kahan hai"
       ],
       "responses": [
-        "Contact ITM Gwalior: 📞 Phone: +91-751-2970300, +91-9039019301. 📧 Email: info@itmgwalior.ac.in. 🌐 Website: www.itmgwalior.ac.in. 📍 Address: ITM Campus, Turari, NH-75, Gwalior - 474001, Madhya Pradesh. ⏰ Office Hours: Monday-Saturday, 9 AM – 5 PM."
+        "📞 Contact ITM Gwalior:\n\n🏫 Main Office:\n  📱 Phone: +91-751-2440056 / +91-751-2432977\n  📧 Email: info@itmgoi.in\n  🌐 Website: www.itmgoi.in\n\n🎓 Admission Helpline:\n  📱 +91-7773005065 / +91-7773001624 / +91-7773001627\n  📧 admission@itmgoi.in\n\n🏆 TAP Cell (Placement):\n  👤 Mr. Arpit Singh Chauhan (Dean/Director TAP)\n  📱 +91-9691973919\n  📧 arpit.chauhan@itmuniversity.ac.in\n\n📍 Address:\n  ITM Campus, Opp. Sithouli Railway Station,\n  NH-75 Sithouli, Jhansi Road,\n  Gwalior - 475001, Madhya Pradesh, India\n\n⏰ Office Hours: Mon–Sat, 9:00 AM – 5:00 PM\n🗺️ Google Maps: https://bit.ly/itm-gwalior"
       ]
     },
     {
@@ -268,16 +658,75 @@
         "fee waiver",
         "scholarship amount",
         "scholarship information",
-        "stipend",
         "financial support",
-        "scholership details",
         "scholarship ke bare mein batao",
         "free admission",
         "scholarship kya hai",
-        "merit based scholarship"
+        "merit based scholarship",
+        "scholarship renewal",
+        "kya scholarship milega mujhe",
+        "90 percent scholarship",
+        "sports scholarship",
+        "government scholarship",
+        "institutional discount"
       ],
       "responses": [
-        "Scholarship opportunities at ITM Gwalior: 1) Merit Scholarship: 50% fee waiver for students with >90% in qualifying exam. 2) EWS Scholarship: 30% fee waiver for economically weaker section (income <2.5L/year). 3) SC/ST Scholarship: Government scholarship + 25% institutional discount. 4) Sports Quota: 20% fee waiver for state/national level athletes. Apply within 30 days of admission."
+        "🏆 Scholarship Opportunities at ITM Gwalior:\n\n1️⃣ Merit Scholarship:\n  💰 50% tuition fee waiver\n  ✅ >90% in qualifying exam\n  🔄 Renewal: Maintain 8.0 CGPA\n\n2️⃣ EWS Scholarship:\n  💰 30% tuition fee waiver\n  ✅ Family income < ₹2.5 lakhs/year\n  🔄 Renewal: Maintain 6.0 CGPA\n\n3️⃣ SC/ST Scholarship:\n  💰 Govt. scholarship + 25% institutional discount\n  ✅ SC/ST category certificate required\n\n4️⃣ Sports Quota Scholarship:\n  💰 20% tuition fee waiver\n  ✅ State/National level participation certificate\n\n5️⃣ Bajaj FinServ CPBFI Program:\n  Certificate in Banking, Finance & Insurance\n  (Career-oriented add-on program)\n\n📝 Apply within 30 days of admission.\n📧 Contact: admissions@itmgoi.in\n📞 Call: +91-7773005065"
+      ]
+    },
+    {
+      "tag": "facilities",
+      "patterns": [
+        "facilities kya hain",
+        "campus facilities",
+        "infrastructure",
+        "college mein kya kya hai",
+        "labs",
+        "library",
+        "computer lab",
+        "what facilities does the college have",
+        "sports facility",
+        "canteen",
+        "cafeteria",
+        "auditorium",
+        "wifi on campus",
+        "smart classroom",
+        "research lab",
+        "college ki facilities batao",
+        "library mein kitni books hain",
+        "sports ground",
+        "basketball",
+        "cricket ground",
+        "gymnasium",
+        "medical facility",
+        "amenities"
+      ],
+      "responses": [
+        "🏛️ Campus Facilities at ITM Gwalior:\n\n📚 Academic:\n  • Central Library: 50,000+ books & e-resources\n  • Modern Computer Labs: 400+ workstations\n  • Smart Classrooms with projectors\n  • Research & Innovation Center\n  • AWS Academy Cloud Lab\n  • Microsoft Centre of Excellence Lab\n\n⚽ Sports:\n  • Cricket Ground\n  • Football Field\n  • Basketball & Badminton Courts\n  • Indoor Sports Room\n  • Sport Cell with coaching\n\n🏥 Other Amenities:\n  • Medical Center on campus\n  • Cafeteria & Food Court\n  • Auditorium (800 seating capacity)\n  • High-speed WiFi across campus\n  • ATM facility\n  • NSS & Social Service Cell\n  • Performing Arts Club (PAC)\n  • IEEE Student Chapter\n\n🌐 Green, safe & tech-enabled campus!"
+      ]
+    },
+    {
+      "tag": "internship",
+      "patterns": [
+        "internship kaise milegi",
+        "internship facility",
+        "summer internship",
+        "internship program",
+        "kya internship mandatory hai",
+        "45 days internship",
+        "industrial training",
+        "training program",
+        "internship companies",
+        "paid internship",
+        "internship after 2nd year",
+        "internship kab hoti hai",
+        "aws internship",
+        "virtual internship",
+        "eduskills internship",
+        "internship certificate"
+      ],
+      "responses": [
+        "💼 Internship Program at ITM Gwalior:\n\n🔑 Mandatory Summer Internship:\n  • Duration: 45 days (after 2nd/3rd year)\n  • Industry exposure mandatory for all students\n  • Certificate issued after completion\n\n🌐 Virtual Internship Program:\n  • Partnership with EduSkills Foundation & AICTE\n  • AWS, Microsoft, Cisco, Google certifications\n  • 5 Lakh+ internships completed (World Record!)\n  • Ranked #35 All India in EduSkills Rankings 2024\n\n🏢 Industry Internship Partners:\n  TCS, Infosys, Wipro, Cognizant,\n  AWS Academy, Microsoft & 100+ companies\n\n📋 TAP Cell coordinates all internships.\n📞 Contact TAP Cell: +91-9691973919\n📧 arpit.chauhan@itmuniversity.ac.in"
       ]
     },
     {
@@ -295,14 +744,16 @@
         "exam details",
         "entrance examination",
         "exam format",
-        "exam patten",
         "syllabus for entrance",
         "exam duration",
-        "entrance test details",
-        "exam timetable"
+        "jee mains syllabus",
+        "rgpv entrance",
+        "exam timetable",
+        "exam centers",
+        "exam center gwalior"
       ],
       "responses": [
-        "For B.Tech admissions, ITM Gwalior follows RGPV / DTE MP counselling based on JEE Mains score. Exam Date: June 15, 2025. Duration: 3 hours. Pattern: MCQ (100 questions). Subjects: Physics, Chemistry, Maths. Total Marks: 400. Admit Card release: June 8, 2025. Exam centers: Gwalior, Bhopal, Indore, Jabalpur. Syllabus follows NCERT 11th & 12th standard."
+        "📝 Entrance Exam Details for ITM Gwalior Admission:\n\n🔧 For B.Tech (RGPV Affiliated):\n  • Exam: JEE Mains (Jan & April sessions)\n  • Admission via: RGPV / DTE MP Counselling\n  • Pattern: MCQ (Physics + Chemistry + Maths)\n  • Duration: 3 hours | Total: 300 marks\n  • Syllabus: NCERT 11th & 12th standard\n  • Exam Centers: Gwalior, Bhopal, Indore, Jabalpur, Ujjain\n\n💻 For BCA / BBA / B.Com / B.Sc:\n  • Direct admission on merit (12th marks)\n  • No entrance exam required!\n\n📚 For MBA:\n  • CAT / MAT / XAT / MP-MAT score accepted\n\n🎓 For M.Tech:\n  • GATE score preferred (direct admission also available)\n\n📞 More details: +91-7773005065"
       ]
     },
     {
@@ -320,14 +771,46 @@
         "result check kaise karein",
         "how to check result",
         "result announcement",
-        "result dekh na hai",
         "selection status",
         "waitlist status",
         "result kab",
-        "cut off list"
+        "cut off list",
+        "seat allotment result",
+        "counselling result"
       ],
       "responses": [
-        "Results & Merit List: Entrance exam result: June 25, 2025. Merit list will be published on www.itmgwalior.ac.in/results. You'll need your roll number and date of birth to check. First merit list: July 1, 2025. Second merit list (if required): July 8, 2025. SMS and email notification will be sent to registered candidates."
+        "📊 Results & Merit List at ITM Gwalior:\n\n📅 Tentative Dates (2026):\n  • JEE Mains Result: April/May 2026\n  • DTE MP Counselling Registration: June 2026\n  • 1st Merit List: July 2026\n  • 2nd Merit List: July 2026 (if needed)\n  • Classes Begin: August 2026\n\n🔍 How to Check:\n  • Visit www.itmgoi.in → Admission section\n  • DTE MP portal: dte.mponline.gov.in\n  • Roll number + Date of Birth required\n  • SMS/Email notification to registered candidates\n\n📞 Result queries: +91-7773005065\n📧 admission@itmgoi.in"
+      ]
+    },
+    {
+      "tag": "clubs_activities",
+      "patterns": [
+        "clubs kya hain",
+        "extracurricular activities",
+        "college events",
+        "cultural fest",
+        "technical fest",
+        "diversitm",
+        "annual fest",
+        "nss",
+        "sports events",
+        "performing arts",
+        "pac club",
+        "student activities",
+        "college life",
+        "campus life",
+        "life at itm",
+        "ieee student chapter",
+        "coding club",
+        "hackathon",
+        "cultural activities",
+        "uba cell",
+        "women empowerment cell",
+        "college mein kya activities hoti hain",
+        "sports competition"
+      ],
+      "responses": [
+        "🎉 Student Life & Clubs at ITM Gwalior:\n\n🎭 Cultural & Arts:\n  • Performing Arts Club (PAC) — Music, Dance, Drama\n  • DiversITM — Annual Cultural & Technical Fest\n  • Student Magazine\n\n💻 Technical:\n  • IEEE Student Chapter\n  • Coding & Hackathon Club\n  • Research & Innovation Cell\n  • AWS Cloud Club\n  • Microsoft Student Partners\n\n🌱 Social Service:\n  • NSS Cell (National Service Scheme)\n  • UBA Cell (Unnat Bharat Abhiyan)\n  • Women Empowerment Cell (WEC)\n  • Anti-Ragging Committee\n\n⚽ Sports:\n  • Sports Cell — Cricket, Football, Basketball, Badminton\n  • State & National level competitions\n  • Dedicated sports coaching\n\n🏆 Alumni:\n  • Active Alumni Network: www.itmalumni.in\n  • Alumni Mentorship Program\n  • Alumni Chapters across India\n\nLife at ITM is exciting — academics + activities = complete development! 🌟"
       ]
     },
     {
@@ -349,262 +832,60 @@
         "appointment chahiye",
         "counselor se milna hai",
         "book counselling",
-        "schedule appointment"
+        "schedule appointment",
+        "campus tour book karna hai",
+        "admission counsellor se milna hai",
+        "visit ITM gwalior",
+        "come to college"
       ],
       "responses": [
-        "I'd be happy to help you book a counselling appointment at ITM Gwalior! Let me collect your details."
+        "📅 I'd be happy to help you book a counselling appointment at ITM Gwalior! Let me collect your details."
       ]
     },
     {
-      "tag": "placement_info",
+      "tag": "how_to_reach",
       "patterns": [
-        "placements kaisi hain",
-        "kaun si company aati hai",
-        "placement percentage",
-        "average package kya hai",
-        "highest package",
-        "kitni companies aati hain",
-        "job milegi",
-        "campus placement",
-        "on campus placement",
-        "placement record",
-        "TCS aata hai kya",
-        "placement details",
-        "placement information",
-        "companies visiting campus",
-        "job opportunities"
+        "how to reach ITM gwalior",
+        "college kaise pahunche",
+        "gwalior station se kitna door hai",
+        "directions to college",
+        "nearest railway station",
+        "bus from gwalior station",
+        "transport facility",
+        "college ka rasta",
+        "kahan hai college exactly",
+        "sithouli",
+        "nh 75",
+        "jhansi road",
+        "from gwalior city",
+        "from gwalior station to college",
+        "auto se kaise jaaye",
+        "distance from city center",
+        "how far from station"
       ],
       "responses": [
-        "ITM Gwalior has an excellent placement record with 90% overall placement rate. Top recruiters include TCS, Infosys, Wipro, Accenture, and more!"
-      ]
-    },
-    {
-      "tag": "campus_life",
-      "patterns": [
-        "hostel hai",
-        "canteen kaisi hai",
-        "sports facility",
-        "gym hai kya",
-        "library",
-        "wifi hai kya",
-        "extracurricular",
-        "clubs hain kya",
-        "activities",
-        "campus facilities",
-        "campus life kaisi hai",
-        "college life",
-        "student life",
-        "recreational facilities",
-        "campus mein kya kya hai"
-      ],
-      "responses": [
-        "ITM Gwalior has a vibrant campus with sports facilities, library, WiFi, clubs, and more!"
-      ]
-    },
-    {
-      "tag": "faculty_info",
-      "patterns": [
-        "teachers kaise hain",
-        "faculty",
-        "professors",
-        "labs hain kya",
-        "research hota hai",
-        "phd faculty",
-        "faculty details",
-        "teaching quality",
-        "faculty members",
-        "lab facilities",
-        "faculty qualifications",
-        "experienced teachers",
-        "professors kaise hain",
-        "teaching staff",
-        "faculty information"
-      ],
-      "responses": [
-        "ITM Gwalior has experienced faculty with PhD and industry experience."
-      ]
-    },
-    {
-      "tag": "lateral_entry",
-      "patterns": [
-        "lateral entry",
-        "direct second year",
-        "diploma ke baad",
-        "LE admission",
-        "3 years B.Tech",
-        "2nd year mein seedha",
-        "polytechnic ke baad",
-        "lateral entry admission",
-        "diploma holder admission",
-        "direct entry second year",
-        "lateral entry eligibility",
-        "lateral entry process",
-        "diploma se btech",
-        "polytechnic to btech",
-        "lateral entry seats"
-      ],
-      "responses": [
-        "Lateral entry allows diploma holders to directly enter 2nd year B.Tech at ITM Gwalior."
-      ]
-    },
-    {
-      "tag": "naac_ranking",
-      "patterns": [
-        "NAAC grade",
-        "ranking",
-        "NIRF",
-        "accreditation",
-        "kitni rank hai",
-        "recognized hai kya",
-        "UGC approved",
-        "college ranking",
-        "college rating",
-        "NAAC accreditation",
-        "college grade",
-        "university ranking",
-        "best college hai kya",
-        "approval status",
-        "college reputation"
-      ],
-      "responses": [
-        "ITM Gwalior has NAAC B++ grade, AICTE approval, and is affiliated to RGPV Bhopal."
-      ]
-    },
-    {
-      "tag": "anti_ragging",
-      "patterns": [
-        "ragging hoti hai kya",
-        "safe hai campus",
-        "anti ragging",
-        "committee",
-        "complaint kahan karein",
-        "ragging complaint",
-        "campus safety",
-        "is campus safe",
-        "anti ragging committee",
-        "ragging helpline",
-        "student safety",
-        "ragging policy",
-        "zero tolerance",
-        "safety measures",
-        "anti ragging helpline"
-      ],
-      "responses": [
-        "ITM Gwalior has a strict anti-ragging policy with zero tolerance."
-      ]
-    },
-    {
-      "tag": "refund_policy",
-      "patterns": [
-        "fees wapas milegi",
-        "refund",
-        "cancel karna hai admission",
-        "TC chahiye",
-        "transfer certificate",
-        "withdrawal",
-        "fee refund policy",
-        "admission cancel",
-        "money back",
-        "refund process",
-        "cancellation policy",
-        "fee wapas",
-        "admission withdrawal",
-        "refund kitna milega",
-        "how to cancel admission"
-      ],
-      "responses": [
-        "ITM Gwalior has a clear refund policy based on the date of cancellation."
-      ]
-    },
-    {
-      "tag": "nri_quota",
-      "patterns": [
-        "NRI quota",
-        "foreign students",
-        "abroad se",
-        "management quota",
-        "NRI admission",
-        "international students",
-        "NRI seats",
-        "management seats",
-        "foreign admission",
-        "NRI category",
-        "overseas students",
-        "management quota admission",
-        "NRI fee structure",
-        "foreign national admission",
-        "international admission"
-      ],
-      "responses": [
-        "ITM Gwalior has provisions for NRI and management quota admissions."
-      ]
-    },
-    {
-      "tag": "events_fest",
-      "patterns": [
-        "techfest",
-        "cultural fest",
-        "hackathon",
-        "events hote hain",
-        "annual function",
-        "sports day",
-        "college fest",
-        "tech fest",
-        "cultural events",
-        "college events",
-        "annual fest",
-        "competitions",
-        "workshops",
-        "seminars",
-        "college function"
-      ],
-      "responses": [
-        "ITM Gwalior hosts various tech fests, cultural events, hackathons, and sports events throughout the year!"
-      ]
-    },
-    {
-      "tag": "comparison",
-      "patterns": [
-        "LNCT se better hai kya",
-        "ITM vs RGPV",
-        "other colleges se compare karo",
-        "best college hai kya Gwalior mein",
-        "college comparison",
-        "ITM vs other colleges",
-        "better hai kya",
-        "kaisa hai college",
-        "worth it hai kya",
-        "top college hai kya",
-        "ranking mein kahan hai",
-        "compare with other",
-        "college review",
-        "ITM Gwalior review",
-        "dusre colleges se better"
-      ],
-      "responses": [
-        "ITM Gwalior stands out with its NAAC B++ grade, strong placements, and excellent infrastructure."
+        "🗺️ How to Reach ITM Gwalior:\n\n📍 Address: ITM Campus, Opp. Sithouli Railway Station,\nNH-75 Sithouli, Jhansi Road, Gwalior - 475001, MP\n\n🚂 By Train:\n  • Nearest Station: Sithouli Railway Station (opposite campus!)\n  • From Gwalior Junction: ~15 km on NH-75 Jhansi Road\n  • Trains from Gwalior to Sithouli available\n\n🚌 By Bus/Road:\n  • From Gwalior city: Take NH-75 towards Jhansi\n  • ~25-30 minutes from Gwalior city center\n  • Auto/cab easily available from Gwalior station\n\n✈️ By Air:\n  • Nearest Airport: Gwalior Airport (~20 km)\n  • Cab/taxi available from airport\n\n🗺️ Google Maps: https://bit.ly/itm-gwalior\n📞 For directions: +91-7773005065"
       ]
     },
     {
       "tag": "fallback",
       "patterns": [
-        "what is the meaning of life",
-        "tell me a joke",
-        "who are you",
         "asdfgh",
         "random text",
         "I don't know",
         "hmm",
-        "ok",
         "nothing",
         "never mind",
         "forget it",
-        "doesn't matter"
+        "doesn't matter",
+        "what is the meaning of life",
+        "tell me a joke",
+        "who are you",
+        "what can you do"
       ],
       "responses": [
-        "I'm sorry, I didn't quite understand that. Could you please rephrase your question? I can help you with admissions, courses, fees, eligibility, scholarships, and more!",
-        "I didn't catch that. Could you ask again? I'm here to help with information about Institute of Technology & Management, Gwalior.",
-        "Hmm, I'm not sure I understood. Try asking about: Courses, Fees, Admission Process, Eligibility, or Scholarships!"
+        "🤔 I didn't quite understand that. I can help you with:\n\n📚 Courses & Specializations (AIML, CSE, IT, MBA...)\n💰 Fees & Scholarships\n📋 Admission Process & Documents\n🏆 Placement & Companies\n🏠 Hostel Facilities\n📅 Campus Visit Booking\n⏰ College Timings\n📞 Contact Information\n\nJust ask your question — I'm here to help! 😊",
+        "Hmm, I'm not sure I understood. Try asking about:\nCourses | Fees | Admission | Placement | Hostel | Scholarships\n\nOr call: +91-7773005065 for direct help!"
       ]
     }
   ]

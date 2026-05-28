@@ -63,8 +63,8 @@
     }
   </style>
 </head>
-<body>
-<div class="topbar">
+<body class="admin-shell">
+<div class="topbar admin-topbar">
   <h1>🎓 ITM Gwalior – Admin Panel</h1>
   <a href="/">← Back to Chatbot</a>
 </div>
@@ -73,30 +73,30 @@
 
   <!-- Stats -->
   <div class="stats-grid">
-    <div class="stat-card">
+    <div class="stat-card admin-card">
       <div class="value">{{ stats.total_appointments }}</div>
       <div class="label">Total Appointments</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card admin-card">
       <div class="value">{{ stats.pending_count }}</div>
       <div class="label">Pending</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card admin-card">
       <div class="value">{{ stats.confirmed_count }}</div>
       <div class="label">Confirmed</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card admin-card">
       <div class="value">{{ stats.total_leads }}</div>
       <div class="label">Total Leads</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card admin-card">
       <div class="value">{{ stats.today_logs }}</div>
       <div class="label">Chats Today</div>
     </div>
   </div>
 
   <!-- Intent Distribution Chart -->
-  <div class="card">
+  <div class="card admin-card">
     <h2>📊 Intent Distribution</h2>
     <div class="chart-wrap">
       <canvas id="intentChart"></canvas>
@@ -104,7 +104,7 @@
   </div>
 
   <!-- Appointments Table -->
-  <div class="card">
+  <div class="card admin-card">
     <div class="card-header">
       <h2>📅 Appointments</h2>
       <a href="/admin/export/appointments" class="btn btn-primary btn-sm">⬇ Export CSV</a>
@@ -147,7 +147,7 @@
   </div>
 
   <!-- Leads Table -->
-  <div class="card">
+  <div class="card admin-card">
     <h2>👥 Leads</h2>
     {% if leads %}
     <table>

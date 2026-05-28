@@ -92,10 +92,21 @@ class ContextManager:
         ctx["previous_intent"] = ctx["current_intent"]
         ctx["current_intent"] = intent
 
+        # Update active topic for follow-up resolution
+        if intent:
+            ctx["active_topic"] = intent
+
         # Merge entities (non-None values override previous)
         for key, value in entities.items():
             if value is not None:
                 ctx["entities_so_far"][key] = value
+
+        # Keep explicit active course / specialization for quick access
+        if entities.get("course"):
+            ctx["active_course"] = entities["course"]
+            ctx["last_course"] = entities["course"]
+        if entities.get("specialization"):
+            ctx["active_specialization"] = entities["specialization"]
 
         # Track last course separately for pronoun resolution
         if entities.get("course"):
@@ -152,6 +163,33 @@ class ContextManager:
         ctx = self.get_or_create(session_id)
         return ctx.get("previous_intent")
 
+    # ------------------------------------------------------------------
+    # Active topic helpers
+    # ------------------------------------------------------------------
+
+    def get_active_topic(self, session_id: str) -> str | None:
+        """Return the currently active topic/intent for the session."""
+        ctx = self.get_or_create(session_id)
+        return ctx.get("active_topic")
+
+    def get_active_course(self, session_id: str) -> str | None:
+        """Return the active course tracked for the session."""
+        ctx = self.get_or_create(session_id)
+        return ctx.get("active_course") or ctx.get("last_course")
+
+    def get_active_specialization(self, session_id: str) -> str | None:
+        """Return the active specialization tracked for the session."""
+        ctx = self.get_or_create(session_id)
+        return ctx.get("active_specialization")
+
+    def set_active_course(self, session_id: str, course: str) -> None:
+        ctx = self.get_or_create(session_id)
+        ctx["active_course"] = course
+
+    def set_active_specialization(self, session_id: str, spec: str) -> None:
+        ctx = self.get_or_create(session_id)
+        ctx["active_specialization"] = spec
+
     def get_entities_so_far(self, session_id: str) -> dict:
         """Return all accumulated entities for the session."""
         ctx = self.get_or_create(session_id)
@@ -179,6 +217,10 @@ class ContextManager:
             "slot_state": "IDLE",
             "entities_so_far": {},
             "last_course": None,
+            "active_topic": None,
+            "active_course": None,
+            "active_specialization": None,
+            "recent_topic": None,
             "turn_count": 0,
             "created_at": datetime.utcnow().isoformat(),
         }

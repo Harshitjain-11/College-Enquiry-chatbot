@@ -11,6 +11,7 @@ import json
 import logging
 import joblib
 import numpy as np
+from difflib import get_close_matches
 from pathlib import Path
 
 import nltk
@@ -28,6 +29,124 @@ logger = logging.getLogger(__name__)
 BASE_DIR = Path(__file__).resolve().parent.parent
 INTENTS_PATH = BASE_DIR / "data" / "intents.json"
 VECTORIZER_PATH = BASE_DIR / "models" / "vectorizer.pkl"
+
+KEYWORD_INTENT_MAP = {
+    "tell me about your college": "college_overview",
+    "tell me about the college": "college_overview",
+    "about itm": "college_overview",
+    "about college": "college_overview",
+    "itm good": "college_overview",
+        "tell me about your college": "about_college",
+        "tell me about the college": "about_college",
+        "about itm": "about_college",
+        "about college": "about_college",
+        "itm good": "about_college",
+        "where is itm located": "contact_info",
+        "where is itm": "contact_info",
+        "located": "contact_info",
+        "location": "contact_info",
+    "aiml": "specializations", "ai": "specializations", "ml": "specializations",
+        "ds": "specializations",
+        "data science": "specializations",
+        "data science branch": "specializations",
+        "cse ds": "specializations",
+        "cs-ds": "specializations",
+    "artificial intelligence": "specializations", "machine learning": "specializations",
+    "data science": "specializations", "cybersecurity": "specializations",
+    "cyber": "specializations", "iot": "specializations", "cloud": "specializations",
+    "specialization": "specializations", "specialisation": "specializations",
+    "branches in cse": "specializations", "cse branches": "specializations",
+    "vlsi": "specializations", "embedded": "specializations",
+
+    "placement": "placement", "package": "placement", "lpa": "placement",
+    "salary": "placement", "tap cell": "placement", "tap": "placement",
+    "placed": "placement", "recruit": "placement",
+
+    "company": "companies_recruiters", "companies": "companies_recruiters",
+    "tcs": "companies_recruiters", "infosys": "companies_recruiters",
+    "wipro": "companies_recruiters", "ibm": "companies_recruiters",
+    "mnc": "companies_recruiters", "recruiter": "companies_recruiters",
+
+    "timing": "campus_timing", "timings": "campus_timing",
+    "open": "campus_timing", "close": "campus_timing", "hours": "campus_timing",
+
+    "counselling": "counselling_info", "counseling": "counselling_info",
+    "dte": "counselling_info", "mponline": "counselling_info",
+    "seat allotment": "counselling_info", "choice filling": "counselling_info",
+
+    "konsa": "course_recommendation", "suggest": "course_recommendation",
+    "better": "course_recommendation", "vs": "course_recommendation",
+    "recommend": "course_recommendation", "which course": "course_recommendation",
+    "best course": "course_recommendation",
+
+    "scope": "career_scope", "career": "career_scope", "future": "career_scope",
+    "btech ke baad": "career_scope",
+    "government job": "career_scope", "govt job": "career_scope",
+    "gate": "career_scope", "upsc": "career_scope", "ms abroad": "career_scope",
+    "higher studies": "career_scope", "after btech": "career_scope",
+
+    "kitni branches": "total_branches", "how many branches": "total_branches",
+    "total courses": "total_branches", "all branches": "total_branches",
+    "complete list": "total_branches", "sari branches": "total_branches",
+
+    "fees": "fees_structure", "fee": "fees_structure", "cost": "fees_structure",
+    "charges": "fees_structure", "tuition": "fees_structure",
+
+    "hostel": "hostel_info", "accommodation": "hostel_info",
+    "stay": "hostel_info", "mess": "hostel_info",
+
+    "scholarship": "scholarship", "merit": "scholarship",
+    "ews": "scholarship", "waiver": "scholarship",
+
+    "admission": "admission_process", "apply": "admission_process",
+    "enroll": "admission_process", "register": "admission_process",
+
+    "naac": "about_college", "nba": "about_college",
+    "ranking": "about_college", "accredited": "about_college",
+    "established": "about_college", "history": "about_college",
+
+    "btech": "courses_offered", "cse": "courses_offered",
+    "b.tech": "courses_offered", "mba": "courses_offered",
+    "mca": "courses_offered", "bca": "courses_offered",
+
+    "internship": "internship", "intern": "internship",
+    "eduskills": "internship", "45 days": "internship",
+
+    "library": "facilities", "lab": "facilities", "labs": "facilities",
+    "cafeteria": "facilities", "auditorium": "facilities",
+    "wifi": "facilities", "sports": "facilities",
+
+    "phone": "contact_info", "email": "contact_info",
+    "contact": "contact_info", "address": "contact_info",
+    "helpline": "contact_info",
+
+    "reach": "how_to_reach", "direction": "how_to_reach",
+    "sithouli": "how_to_reach", "railway": "how_to_reach",
+    "distance": "how_to_reach",
+
+    "fest": "clubs_activities", "club": "clubs_activities",
+    "nss": "clubs_activities", "cultural": "clubs_activities",
+    "diversitm": "clubs_activities", "ieee": "clubs_activities",
+
+    "appointment": "slot_booking", "book": "slot_booking",
+    "visit": "slot_booking", "counsellor": "slot_booking",
+}
+
+HINGLISH_MAP = {
+    "clg": "college",
+    "btech": "btech engineering",
+    "aiml": "artificial intelligence machine learning",
+    "kitni": "how much",
+    "kya": "what",
+    "kaise": "how",
+    "hai": "is",
+    "hain": "are",
+    "batao": "tell",
+    "chahiye": "want",
+    "milega": "will get",
+    "krna": "do",
+    "konsa": "which",
+}
 
 
 def _get_wordnet_pos(treebank_tag: str) -> str:
@@ -69,6 +188,11 @@ class NLPEngine:
             "kya padhenge", "kya hai", "programme", "branch",
             "stream", "subjects"
         ],
+            "about_college": [
+                "tell me about your college", "tell me about the college",
+                "about itm", "about college", "college", "itm", "good college",
+                "itm good", "college kaisa hai", "kya itm good hai"
+            ],
         "eligibility": [
             "eligib", "eligible", "marks", "percentage", "qualify",
             "qualification", "minimum", "criteria", "requirement", "cutoff",
@@ -237,8 +361,10 @@ class NLPEngine:
         Returns:
             Tuple of (list of lemmatized tokens, cleaned string joined by spaces).
         """
-        # Lowercase
+        # Lowercase and apply Hinglish normalization before tokenizing
         text = text.lower()
+        for source, replacement in HINGLISH_MAP.items():
+            text = re.sub(rf"\b{re.escape(source)}\b", replacement, text)
         # Remove punctuation except apostrophes
         text = re.sub(r"[^\w\s']", " ", text)
         # Collapse whitespace
@@ -280,7 +406,7 @@ class NLPEngine:
             tokens, best_intent, best_score, similarities
         )
 
-        if boosted_score < 0.20:
+        if boosted_score < 0.25:
             logger.debug("Low confidence %.3f — returning fallback.", boosted_score)
             return "fallback", boosted_score
 
@@ -304,6 +430,55 @@ class NLPEngine:
             if found:
                 matches[intent] = found
         return matches
+
+    def keyword_boost(self, text: str) -> str | None:
+        text_lower = text.lower().strip()
+        word_text = f" {text_lower} "
+
+        # Direct phrase/token match first using word boundaries.
+        for keyword in sorted(KEYWORD_INTENT_MAP.keys(), key=len, reverse=True):
+            if self._keyword_present(word_text, keyword):
+                return KEYWORD_INTENT_MAP[keyword]
+
+        # Try fuzzy matching on words (handles typos like 'aimlll' -> 'aiml')
+        words = re.findall(r"\w+", text_lower)
+        keys = list(KEYWORD_INTENT_MAP.keys())
+        for w in words:
+            matches = get_close_matches(w, keys, n=1, cutoff=0.75)
+            if matches:
+                return KEYWORD_INTENT_MAP[matches[0]]
+
+        # Try matching against course names and short names in knowledge base
+        try:
+            kb_path = BASE_DIR / "data" / "knowledge_base.json"
+            if kb_path.exists():
+                with open(kb_path, "r", encoding="utf-8") as f:
+                    kb = json.load(f)
+                candidates = []
+                for section in (
+                    kb.get("courses", {}).get("ug", []),
+                    kb.get("courses", {}).get("pg", []),
+                ):
+                    for c in section:
+                        if "name" in c:
+                            candidates.append(c["name"].lower())
+                        if "short" in c:
+                            candidates.append(c["short"].lower())
+                        for s in c.get("specializations", []) or []:
+                            candidates.append(s.lower())
+                match = get_close_matches(text_lower, candidates, n=1, cutoff=0.7)
+                if match:
+                    return "specializations"
+        except Exception:
+            pass
+
+        return None
+
+    def _keyword_present(self, word_text: str, keyword: str) -> bool:
+        """Check whether a keyword appears as a standalone token/phrase."""
+        escaped = re.escape(keyword.lower().strip())
+        pattern = rf"(?<!\w){escaped}(?!\w)"
+        return re.search(pattern, word_text) is not None
 
     # ------------------------------------------------------------------
     # Private helpers

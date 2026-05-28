@@ -88,6 +88,7 @@ function appendMessage(text, role, quickReplies = []) {
     quickReplies.forEach((label) => {
       const btn = document.createElement('button');
       btn.className = 'quick-btn';
+      btn.type = 'button';
       btn.textContent = label;
       btn.addEventListener('click', () => {
         sendUserMessage(label);
@@ -136,6 +137,7 @@ async function sendUserMessage(text) {
   appendMessage(trimmed, 'user');
   userInput.value = '';
   setInputEnabled(false);
+  sendBtn.blur();
 
   // Simulate typing delay for realism
   await new Promise((r) => setTimeout(r, 350));

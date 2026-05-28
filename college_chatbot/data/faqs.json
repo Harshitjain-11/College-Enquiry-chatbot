@@ -1,49 +1,379 @@
 {
   "faqs": [
     {
-      "question": "Is the college AICTE approved?",
-      "answer": "Yes, Institute of Technology & Management (ITM), Gwalior is approved by AICTE (All India Council for Technical Education). B.Tech courses are affiliated to RGPV (Rajiv Gandhi Proudyogiki Vishwavidyalaya), Bhopal.",
+      "question": "Is ITM Gwalior AICTE approved?",
+      "answer": "Yes. ITM Gwalior is AICTE approved, NBA accredited, and holds NAAC 'A' Grade with CGPA 3.01 valid till November 24, 2030.",
       "category": "general"
     },
     {
-      "question": "What is the placement record?",
-      "answer": "Our placement rate is 90% with an average package of ₹5.5 LPA and highest package of ₹18 LPA. Top recruiters include TCS, Infosys, Wipro, HCL, Accenture, Tech Mahindra, Cognizant and more.",
+      "question": "What is the NAAC grade of ITM Gwalior?",
+      "answer": "ITM Gwalior has NAAC 'A' Grade with CGPA 3.01 and validity till November 24, 2030.",
+      "category": "general"
+    },
+    {
+      "question": "When was ITM Gwalior established?",
+      "answer": "ITM Gwalior was established in 1997 and has 29+ years of academic experience.",
+      "category": "general"
+    },
+    {
+      "question": "What is the official website of ITM Gwalior?",
+      "answer": "The official website is www.itmgoi.in. Use the online apply link at http://itmgoi.in/OnlineApply_ITMGOI.",
+      "category": "general"
+    },
+    {
+      "question": "What is the address of ITM Gwalior?",
+      "answer": "ITM Campus, Opp. Sithouli Railway Station, NH-75 Sithouli, Jhansi Road, Gwalior - 475001, MP.",
+      "category": "general"
+    },
+    {
+      "question": "What courses are offered at ITM Gwalior?",
+      "answer": "ITM Gwalior offers B.Tech CSE, B.Tech IT, B.Tech ECE, B.Tech ME, B.Tech Civil, BCA, BBA, B.Sc, B.Com, M.Tech, MBA, MCA, and M.Sc.",
+      "category": "courses"
+    },
+    {
+      "question": "Does ITM Gwalior offer B.Tech CSE?",
+      "answer": "Yes. B.Tech CSE is offered for 4 years with specializations like CS-AIML, CS-Data Science, CS-Cybersecurity, CS-IoT, and CS-Cloud.",
+      "category": "courses"
+    },
+    {
+      "question": "Does ITM Gwalior offer B.Tech IT?",
+      "answer": "Yes. B.Tech IT is offered for 4 years with specializations in Web Technologies, Mobile App Development, Network Security, and Database Management.",
+      "category": "courses"
+    },
+    {
+      "question": "Does ITM Gwalior offer B.Tech ECE?",
+      "answer": "Yes. B.Tech ECE is available with specializations in VLSI Design, Embedded Systems, and Signal Processing.",
+      "category": "courses"
+    },
+    {
+      "question": "Does ITM Gwalior offer B.Tech Mechanical Engineering?",
+      "answer": "Yes. B.Tech Mechanical Engineering is available with specializations in Automobile Engineering, Thermal Engineering, Manufacturing, and CAD/CAM.",
+      "category": "courses"
+    },
+    {
+      "question": "Does ITM Gwalior offer B.Tech Civil Engineering?",
+      "answer": "Yes. B.Tech Civil Engineering is available with specializations in Structural Engineering, Environmental Engineering, and Transportation Engineering.",
+      "category": "courses"
+    },
+    {
+      "question": "What is the fee for B.Tech CSE?",
+      "answer": "B.Tech CSE fee is Rs.87,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Tech IT?",
+      "answer": "B.Tech IT fee is Rs.85,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Tech ECE?",
+      "answer": "B.Tech ECE fee is Rs.84,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Tech Mechanical Engineering?",
+      "answer": "B.Tech Mechanical Engineering fee is Rs.82,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Tech Civil Engineering?",
+      "answer": "B.Tech Civil Engineering fee is Rs.80,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for BCA?",
+      "answer": "BCA fee is Rs.48,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for BBA?",
+      "answer": "BBA fee is Rs.42,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Com?",
+      "answer": "B.Com fee is Rs.32,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for B.Sc?",
+      "answer": "B.Sc fee is Rs.36,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for MBA?",
+      "answer": "MBA fee is Rs.88,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for MCA?",
+      "answer": "MCA fee is Rs.58,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for M.Tech?",
+      "answer": "M.Tech fee is Rs.92,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the fee for M.Sc?",
+      "answer": "M.Sc fee is Rs.46,000 per year.",
+      "category": "fees"
+    },
+    {
+      "question": "What is the eligibility for B.Tech admission?",
+      "answer": "For B.Tech, students need 60% in PCM in 12th and a valid JEE Mains score for DTE MP / RGPV counselling.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the eligibility for BCA admission?",
+      "answer": "BCA requires 55% in 12th with Mathematics and can be taken through direct merit-based admission.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the eligibility for BBA admission?",
+      "answer": "BBA requires 50% in 12th in any stream and is generally direct admission based on merit.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the eligibility for MBA?",
+      "answer": "MBA requires graduation with at least 50% and entrance exams such as CAT, MAT, XAT, or MP-MAT.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the eligibility for MCA?",
+      "answer": "MCA requires BCA or B.Sc (CS/IT) with 55% and Mathematics in the qualifying exam.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the eligibility for M.Tech?",
+      "answer": "M.Tech requires a relevant B.Tech or B.E. degree with 60% and preferably a GATE score.",
+      "category": "eligibility"
+    },
+    {
+      "question": "What is the admission process for ITM Gwalior?",
+      "answer": "Apply online at www.itmgoi.in, pay the application fee, complete counselling or merit-based admission steps, and report to the campus with documents.",
+      "category": "admissions"
+    },
+    {
+      "question": "What is the last date to apply for 2026 admission?",
+      "answer": "The last date to apply for 2026 admission is May 31, 2026.",
+      "category": "admissions"
+    },
+    {
+      "question": "What is the application fee?",
+      "answer": "The application fee is Rs.500.",
+      "category": "admissions"
+    },
+    {
+      "question": "When do classes begin?",
+      "answer": "Classes are expected to begin in August 2026.",
+      "category": "admissions"
+    },
+    {
+      "question": "What is the DTE MP counselling process?",
+      "answer": "The process includes JEE Mains score, DTE MP registration, document verification, choice filling, seat allotment, and reporting to the institute.",
+      "category": "admissions"
+    },
+    {
+      "question": "Can I get direct admission without JEE in BCA or BBA?",
+      "answer": "Yes. BCA and BBA admissions are direct and merit-based, so JEE is not required.",
+      "category": "admissions"
+    },
+    {
+      "question": "What documents are required for admission?",
+      "answer": "You need 10th and 12th marksheets, Aadhar card, photographs, migration certificate, character certificate, transfer certificate, and category or score documents if applicable.",
+      "category": "admissions"
+    },
+    {
+      "question": "What scholarships are available at ITM Gwalior?",
+      "answer": "Available scholarships include Merit Scholarship, EWS Scholarship, SC/ST scholarship support, and Sports Scholarship.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the merit scholarship?",
+      "answer": "Students with more than 90% marks can get a 50% fee waiver, subject to renewal rules.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the EWS scholarship?",
+      "answer": "Students with family income below Rs.2.5 lakhs can get a 30% fee waiver, subject to renewal rules.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the SC/ST scholarship support?",
+      "answer": "SC/ST students can receive government scholarship support plus a 25% institutional discount, as applicable.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the sports scholarship?",
+      "answer": "State or national level athletes can receive a 20% fee waiver.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the hostel fee for boys?",
+      "answer": "The boys hostel fee is Rs.68,000 per year, mess included.",
+      "category": "hostel"
+    },
+    {
+      "question": "What is the hostel fee for girls?",
+      "answer": "The girls hostel fee is Rs.72,000 per year, mess included.",
+      "category": "hostel"
+    },
+    {
+      "question": "How many students can stay in the boys hostel?",
+      "answer": "The boys hostel has a capacity of 500 students.",
+      "category": "hostel"
+    },
+    {
+      "question": "How many students can stay in the girls hostel?",
+      "answer": "The girls hostel has a capacity of 300 students.",
+      "category": "hostel"
+    },
+    {
+      "question": "What facilities are available in the hostel?",
+      "answer": "Hostel facilities include security, WiFi, hot water, common room, laundry, medical room, and mess.",
+      "category": "hostel"
+    },
+    {
+      "question": "What is the placement rate at ITM Gwalior?",
+      "answer": "ITM Gwalior has a placement rate of 90%+.",
       "category": "placement"
     },
     {
-      "question": "Is there a transport facility?",
-      "answer": "Yes, the college provides bus service covering major areas of Gwalior city and nearby regions. Monthly bus pass is available at ₹1,200/month.",
+      "question": "What is the average package at ITM Gwalior?",
+      "answer": "The average package is Rs.5.5 LPA.",
+      "category": "placement"
+    },
+    {
+      "question": "What is the highest package at ITM Gwalior?",
+      "answer": "The highest package is Rs.18 LPA.",
+      "category": "placement"
+    },
+    {
+      "question": "Which companies recruit from ITM Gwalior?",
+      "answer": "Top recruiters include TCS, Infosys, Wipro, HCL, Tech Mahindra, Cognizant, Accenture, IBM, Capgemini, Mphasis, FedEx, Xiaomi, ICICI Bank, HDFC Bank, Bajaj FinServ, VISA, and Thermax Limited.",
+      "category": "placement"
+    },
+    {
+      "question": "What is the TAP cell head contact?",
+      "answer": "The TAP Cell head is Mr. Arpit Singh Chauhan. The contact number is +91-9691973919 and the email is arpit.chauhan@itmuniversity.ac.in.",
+      "category": "placement"
+    },
+    {
+      "question": "What is the internship record of ITM Gwalior?",
+      "answer": "ITM Gwalior has a record of 5 Lakh+ internships in 3 years and a World Book of Records recognition.",
+      "category": "placement"
+    },
+    {
+      "question": "What is the EduSkills ranking of ITM Gwalior?",
+      "answer": "ITM Gwalior was ranked #35 All India in 2024 for internships and related performance.",
+      "category": "placement"
+    },
+    {
+      "question": "What facilities are available on campus?",
+      "answer": "Campus facilities include a central library, computer labs, departmental labs, WiFi, auditorium, cafeteria, medical room, hostel, transport support, and sports facilities.",
       "category": "facilities"
-    },
-    {
-      "question": "Can I change my course after admission?",
-      "answer": "Course change requests are entertained within the first 30 days of admission, subject to seat availability and eligibility criteria.",
-      "category": "admissions"
-    },
-    {
-      "question": "What is the medium of instruction?",
-      "answer": "The medium of instruction is English for all technical programs (B.Tech, M.Tech). Hindi is used as a supplementary language for better understanding.",
-      "category": "academics"
-    },
-    {
-      "question": "Are there any lateral entry admissions?",
-      "answer": "Yes, lateral entry is available for B.Tech (2nd year) for diploma holders with 60% marks through RGPV lateral entry counselling. Direct 2nd year admission based on merit.",
-      "category": "admissions"
     },
     {
       "question": "What is the library timing?",
-      "answer": "The central library is open Monday to Saturday from 8 AM to 8 PM. Digital library resources are available 24/7 online.",
+      "answer": "The library is open Monday to Saturday from 8:00 AM to 8:00 PM.",
       "category": "facilities"
     },
     {
-      "question": "Is there any entrance exam for BBA and BCA?",
-      "answer": "BBA and BCA admissions at ITM Gwalior are direct (merit-based on 12th marks). No separate entrance exam is required.",
-      "category": "admissions"
+      "question": "How to reach ITM Gwalior?",
+      "answer": "The college is located opposite Sithouli Railway Station on NH-75, Jhansi Road, Gwalior - 475001.",
+      "category": "general"
     },
     {
-      "question": "Which university is B.Tech affiliated to?",
-      "answer": "B.Tech courses at ITM Gwalior are affiliated to Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal. Degree is awarded by RGPV.",
-      "category": "academics"
+      "question": "What is the nearest railway station to ITM Gwalior?",
+      "answer": "The nearest railway station is Sithouli Railway Station, which is opposite the campus.",
+      "category": "general"
+    },
+    {
+      "question": "What are the college timings?",
+      "answer": "College and office hours are Monday to Saturday from 9:00 AM to 5:00 PM. Sunday is closed.",
+      "category": "general"
+    },
+    {
+      "question": "What clubs and activities are available?",
+      "answer": "ITM Gwalior has PAC, IEEE Student Chapter, NSS, UBA Cell, Women Empowerment Cell, Sports Cell, Coding Club, AWS Cloud Club, and an active alumni network.",
+      "category": "campus_life"
+    },
+    {
+      "question": "What is DiversITM?",
+      "answer": "DiversITM is the annual cultural and technical fest of ITM Gwalior.",
+      "category": "campus_life"
+    },
+    {
+      "question": "Does ITM Gwalior have scholarships for meritorious students?",
+      "answer": "Yes. Students scoring more than 90% can get a 50% fee waiver under the merit scholarship.",
+      "category": "scholarships"
+    },
+    {
+      "question": "What is the career scope of B.Tech CSE?",
+      "answer": "B.Tech CSE can lead to software engineering, AI/ML, data science, cloud, and cybersecurity careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of B.Tech IT?",
+      "answer": "B.Tech IT can lead to web development, app development, networking, and database careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of B.Tech ECE?",
+      "answer": "B.Tech ECE can lead to electronics, embedded systems, telecom, and VLSI careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of B.Tech Mechanical?",
+      "answer": "B.Tech Mechanical can lead to production, design, automobile, and manufacturing careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of B.Tech Civil?",
+      "answer": "B.Tech Civil can lead to construction, infrastructure, site engineering, and public works careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of BCA?",
+      "answer": "BCA can lead to software development, web development, and system analysis careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of BBA?",
+      "answer": "BBA can lead to business, marketing, HR, and operations careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of MBA?",
+      "answer": "MBA can lead to leadership, management, finance, marketing, HR, and operations roles.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of MCA?",
+      "answer": "MCA can lead to advanced software, cloud, and data analytics careers.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the career scope of M.Tech?",
+      "answer": "M.Tech can lead to research, teaching, senior engineering, and specialization roles.",
+      "category": "careers"
+    },
+    {
+      "question": "What is the difference between B.Tech CSE and B.Tech IT?",
+      "answer": "CSE focuses more on algorithms, programming, AI, and systems, while IT focuses more on software applications, web technologies, and IT systems.",
+      "category": "comparisons"
+    },
+    {
+      "question": "What is the difference between BCA and B.Tech?",
+      "answer": "BCA is a 3-year application-focused computer program, while B.Tech is a 4-year engineering degree with deeper technical and mathematical depth.",
+      "category": "comparisons"
+    },
+    {
+      "question": "Can I get government jobs after engineering?",
+      "answer": "Yes. After B.Tech you can prepare for GATE, PSU recruitment, SSC, state exams, and other government opportunities.",
+      "category": "careers"
     }
   ]
 }

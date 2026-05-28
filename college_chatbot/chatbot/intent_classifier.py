@@ -61,6 +61,19 @@ class IntentClassifier:
         tokens, cleaned = self.nlp.preprocess(text)
         text_lower = text.lower().strip()
 
+        # Step 0: High-confidence rule-based routing for common conversational phrases
+        rule_intent = self._rule_based_intent(text_lower)
+        if rule_intent:
+            result = {
+                "intent": rule_intent,
+                "confidence": 0.98,
+                "matched_keywords": [],
+                "tokens": tokens,
+                "method": "rule_based",
+            }
+            self._log(session_id, text, result)
+            return result
+
         # Step 1: Exact pattern match
         exact_result = self._exact_match(text_lower)
         if exact_result:
@@ -74,29 +87,40 @@ class IntentClassifier:
             self._log(session_id, text, result)
             return result
 
+        # Step 1.5: Keyword boost for short or high-signal queries
+        kw_boost = self.nlp.keyword_boost(text_lower)
+        if kw_boost:
+            result = {
+                "intent": kw_boost,
+                "confidence": 0.75,
+                "matched_keywords": [],
+                "tokens": tokens,
+                "method": "keyword_boost",
+            }
+            self._log(session_id, text, result)
+            return result
+
         # Step 2: TF-IDF cosine similarity
         intent, confidence = self.nlp.predict_intent(text)
 
-        # Step 3: Keyword fallback — if cosine gave fallback, try keyword rules
-        if intent == "fallback":
+        # Step 3: Keyword fallback if TF-IDF gives low confidence
+        if intent == "fallback" or confidence < 0.25:
             kw_intent = self._keyword_fallback(tokens)
             if kw_intent:
                 intent = kw_intent
-                confidence = 0.45  # moderate confidence for keyword fallback
-
-        # Gather matched keywords for transparency
-        kw_matches = self.nlp.get_keyword_matches(tokens)
-        matched_keywords = kw_matches.get(intent, [])
+                confidence = 0.45
 
         # Detect angry/frustrated user
         if self._is_angry(tokens):
             intent = "angry_user"
             confidence = 0.99
 
+        kw_matches = self.nlp.get_keyword_matches(tokens)
+
         result = {
             "intent": intent,
             "confidence": round(confidence, 4),
-            "matched_keywords": matched_keywords,
+            "matched_keywords": kw_matches.get(intent, []),
             "tokens": tokens,
             "method": "tfidf_cosine" if intent != "fallback" else "fallback",
         }
@@ -149,6 +173,30 @@ class IntentClassifier:
             return None
         # Return intent with most keyword matches
         return max(kw_matches, key=lambda k: len(kw_matches[k]))
+
+    def _rule_based_intent(self, text_lower: str) -> str | None:
+        """Fast path for high-value conversational queries and greetings."""
+        greeting_phrases = {
+            "hello", "hi", "hii", "hey", "hello bhai", "kya scene hai",
+            "namaste", "namaskar", "good morning", "good afternoon", "good evening",
+        }
+        if text_lower in greeting_phrases:
+            return "greeting"
+
+        about_college_phrases = {
+            "tell me about your college", "tell me about the college", "about itm",
+            "is itm good", "itm good", "college kaisa hai", "tell me about itm",
+        }
+        if text_lower in about_college_phrases:
+            return "college_overview"
+
+        if text_lower in {"where is itm located", "where is itm", "itm located", "kahan hai college"}:
+            return "contact_info"
+
+        if text_lower in {"tell me about ds", "ds branch hai", "ds branch", "data science", "data science branch"}:
+            return "specializations"
+
+        return None
 
     def _is_angry(self, tokens: list[str]) -> bool:
         """

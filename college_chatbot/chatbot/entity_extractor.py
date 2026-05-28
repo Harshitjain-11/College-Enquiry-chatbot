@@ -14,6 +14,7 @@ import re
 import json
 import logging
 from pathlib import Path
+from difflib import get_close_matches
 
 import nltk
 from nltk import pos_tag, ne_chunk, word_tokenize
@@ -195,6 +196,13 @@ class EntityExtractor:
         for course in sorted(self.courses, key=len, reverse=True):
             if course.lower() in text_lower:
                 return course
+        # Fuzzy match as fallback for typos/short forms
+        try:
+            matches = get_close_matches(text_lower.strip(), [c.lower() for c in self.courses], n=1, cutoff=0.7)
+            if matches:
+                return matches[0]
+        except Exception:
+            pass
         return None
 
     def _extract_date(self, text: str) -> str | None:
@@ -267,10 +275,19 @@ class EntityExtractor:
             with open(KB_PATH, "r", encoding="utf-8") as f:
                 kb = json.load(f)
             courses: list[str] = []
+            extra_courses = [
+                "CS-AIML", "AIML", "AI ML", "Artificial Intelligence Machine Learning",
+                "CS-DS", "Data Science", "CS-Cybersecurity", "Cybersecurity",
+                "B.Tech IT", "Information Technology", "CS-IoT", "IoT",
+                "CS-Cloud", "Cloud Computing", "B.Tech CSE", "B.Tech ECE",
+                "B.Tech ME", "B.Tech Civil", "BCA", "BBA", "MBA", "MCA", "M.Tech",
+            ]
             for level in ("ug", "pg"):
                 for course in kb["courses"][level]:
                     courses.append(course["short"])
                     courses.append(course["name"])
+                    courses.extend(course.get("specializations", []))
+            courses.extend(extra_courses)
             return courses
         except Exception as exc:
             logger.error("Failed to load knowledge base for courses: %s", exc)

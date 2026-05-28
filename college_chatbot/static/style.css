@@ -3,7 +3,7 @@
   --navy: #1a2a6c;
   --gold: #fdbb2d;
   --crimson: #b21f1f;
-  --bg: #f0f2f5;
+  --bg: #eef2f7;
   --surface: #ffffff;
   --text-primary: #2c3e50;
   --text-secondary: #7f8c8d;
@@ -24,12 +24,16 @@
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(253,187,45,0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(26,42,108,0.12), transparent 26%),
+    linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
+  color: var(--text-primary);
 }
 
 /* ── Chat Container ──────────────────────────────────────────────────────── */
@@ -38,9 +42,11 @@ body {
   max-width: 820px;
   height: 92vh;
   max-height: 900px;
-  background: var(--surface);
+  background: rgba(255,255,255,0.92);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 20px 60px rgba(26,42,108,0.16);
+  border: 1px solid rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -115,6 +121,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  background: linear-gradient(180deg, rgba(248,250,255,0.8), rgba(255,255,255,0.95));
 }
 
 .chat-window::-webkit-scrollbar { width: 4px; }
@@ -168,7 +175,7 @@ body {
   padding: 0.75rem 1rem;
   border-radius: var(--radius);
   line-height: 1.55;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   word-break: break-word;
   white-space: pre-wrap;
 }
@@ -206,7 +213,7 @@ body {
 }
 
 .quick-btn {
-  background: #f0f4ff;
+  background: linear-gradient(180deg, #f7f9ff, #edf2ff);
   color: var(--navy);
   border: 1.5px solid #c5d0f0;
   border-radius: 20px;
@@ -223,6 +230,13 @@ body {
   background: var(--navy);
   color: #fff;
   border-color: var(--navy);
+}
+
+.quick-btn:focus-visible,
+#sendBtn:focus-visible,
+#userInput:focus-visible {
+  outline: 3px solid rgba(26,42,108,0.22);
+  outline-offset: 2px;
 }
 
 /* ── Typing Indicator ────────────────────────────────────────────────────── */
@@ -267,8 +281,10 @@ body {
   gap: 0.6rem;
   padding: 0.9rem 1.25rem;
   border-top: 1px solid var(--border);
-  background: var(--surface);
+  background: rgba(255,255,255,0.95);
   flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
 }
 
 #userInput {
@@ -315,6 +331,34 @@ body {
 #sendBtn:active:not(:disabled) { transform: scale(0.97); }
 #sendBtn:disabled { background: var(--border); cursor: not-allowed; }
 
+/* ── Welcome Card / Helper Text ─────────────────────────────────────────── */
+.welcome-hint {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Admin polish helpers (used by admin.html) ──────────────────────────── */
+.admin-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(253,187,45,0.14), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(26,42,108,0.10), transparent 22%),
+    linear-gradient(180deg, #f8fbff 0%, #eef2f7 100%);
+}
+
+.admin-topbar {
+  background: linear-gradient(135deg, var(--navy), #304ca6 62%, var(--crimson));
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(26,42,108,0.18);
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 14px 40px rgba(26,42,108,0.08);
+}
+
 /* ── Error Toast ─────────────────────────────────────────────────────────── */
 .error-toast {
   background: #fff3f3;
@@ -335,6 +379,12 @@ body {
     max-height: none;
     border-radius: 0;
   }
-  .bubble-wrap { max-width: 85%; }
+  .chat-header,
+  .chat-input-area { padding-left: 0.9rem; padding-right: 0.9rem; }
+  .chat-window { padding: 1rem 0.9rem 0.4rem; }
+  .bubble-wrap { max-width: 88%; }
   .college-tag { display: none; }
+  .header-info h2 { font-size: 0.95rem; }
+  .bubble { font-size: 0.9rem; }
+  .quick-btn { font-size: 0.75rem; padding: 0.32rem 0.8rem; }
 }

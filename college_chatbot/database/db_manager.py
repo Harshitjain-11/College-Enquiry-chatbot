@@ -75,6 +75,25 @@ def init_db() -> None:
     );
     """
 
+    create_intent_history = """
+    CREATE TABLE IF NOT EXISTS intent_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        session_id TEXT,
+        intent TEXT,
+        confidence REAL,
+        tokens TEXT,
+        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """
+
+    create_sessions = """
+    CREATE TABLE IF NOT EXISTS sessions (
+        session_id TEXT PRIMARY KEY,
+        context_json TEXT,
+        last_active TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """
+
     create_leads = """
     CREATE TABLE IF NOT EXISTS leads (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -91,7 +110,14 @@ def init_db() -> None:
     with _db() as conn:
         conn.execute(create_appointments)
         conn.execute(create_enquiry_logs)
+        conn.execute(create_intent_history)
+        conn.execute(create_sessions)
         conn.execute(create_leads)
+
+        # Indexes for faster analytics
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_enquiry_logs_timestamp ON enquiry_logs(timestamp);")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_enquiry_logs_session ON enquiry_logs(session_id);")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_intent_history_session ON intent_history(session_id);")
 
     logger.info("Database initialized at %s.", DB_PATH)
 
@@ -188,6 +214,39 @@ def save_lead(session_id: str, entities: dict) -> None:
             (session_id, name, phone, email, course),
         )
     logger.info("Lead saved for session %s.", session_id)
+
+
+def save_session_context(session_id: str, context: dict) -> None:
+    """
+    Persist minimal session context for analytics and recovery.
+
+    Args:
+        session_id: Unique session identifier.
+        context: JSON-serializable context dict.
+    """
+    ctx_json = json.dumps(context, default=str)
+    with _db() as conn:
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO sessions (session_id, context_json, last_active)
+            VALUES (?, ?, CURRENT_TIMESTAMP)
+            """,
+            (session_id, ctx_json),
+        )
+
+
+def save_intent_history(session_id: str, intent: str, confidence: float, tokens: str = None) -> None:
+    """
+    Save intent classification history for a session.
+    """
+    with _db() as conn:
+        conn.execute(
+            """
+            INSERT INTO intent_history (session_id, intent, confidence, tokens)
+            VALUES (?, ?, ?, ?)
+            """,
+            (session_id, intent, confidence, tokens),
+        )
 
 
 def get_appointment_by_id(booking_id: str) -> dict | None:
