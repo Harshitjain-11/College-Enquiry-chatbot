@@ -53,16 +53,26 @@ from database.db_manager import (
 # ── Logging setup ─────────────────────────────────────────────────────────────
 
 BASE_DIR = Path(__file__).resolve().parent
-LOG_DIR = BASE_DIR / "logs"
+RUNTIME_ROOT = Path(os.environ.get(
+    "ITM_CHATBOT_RUNTIME_DIR",
+    Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "itm_chatbot",
+))
+LOG_DIR = RUNTIME_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+def _build_logging_handlers() -> list[logging.Handler]:
+    handlers: list[logging.Handler] = [logging.StreamHandler()]
+    try:
+        handlers.append(logging.FileHandler(LOG_DIR / "app.log", encoding="utf-8"))
+    except OSError as exc:
+        print(f"Warning: unable to open log file at {LOG_DIR / 'app.log'}: {exc}")
+    return handlers
+
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(LOG_DIR / "app.log", encoding="utf-8"),
-    ],
+    handlers=_build_logging_handlers(),
 )
 logger = logging.getLogger(__name__)
 
@@ -240,151 +250,21 @@ def chat():
         return jsonify({"error": "Model not loaded yet. Please retry."}), 503
 
     data = request.get_json(silent=True) or {}
-    raw_message: str = (data.get("message") or "").strip()
+    user_message: str = (data.get("message") or "").strip()
     session_id: str = (data.get("session_id") or "default").strip()
 
-    if not raw_message:
+    if not user_message:
         return jsonify({"error": "Empty message."}), 400
 
-    logger.info("session=%s message=%r", session_id, raw_message)
+    logger.info("session=%s message=%r", session_id, user_message)
+
+    resolved_message = context_manager.resolve_text(session_id, user_message)
+    entities = entity_extractor.extract(resolved_message)
     booking_id: str | None = None
-    slot_prompt: str | None = None
-    current_slot_state = slot_manager.get_state(session_id)
 
-    # ── BUG 1 FIX: Quick-reply button → skip NLP ──────────────────────
-    if raw_message in QUICK_REPLY_MAP:
-        intent = QUICK_REPLY_MAP[raw_message]
-        confidence = 1.0
-        entities: dict = {}
-
-        # Handle cancel from quick reply
-        if intent == "cancel_booking" and slot_manager.is_active(session_id):
-            slot_manager.cancel(session_id)
-            return jsonify({
-                "reply": "Theek hai, booking cancel kar di! 😊 Koi aur cheez mein help karoon?",
-                "quick_replies": ["Courses Offered", "Fee Structure", "Admission Process", "Contact Us"],
-                "intent": "cancel_booking",
-                "confidence": 1.0,
-                "slot_state": "CANCELLED",
-                "booking_id": None,
-            })
-
-        # course_detail → treat as courses_offered
-        if intent == "course_detail":
-            intent = "courses_offered"
-    else:
-        # ── Preprocessing (PART H edge cases) ─────────────────────────
-        user_message = _preprocess_message(raw_message)
-
-        # High-confidence routing for a few common queries before NLP.
-        routed_intent = _route_common_intent(user_message)
-        if routed_intent:
-            classification = {
-                "intent": routed_intent,
-                "confidence": 0.98,
-                "matched_keywords": [],
-                "tokens": [],
-                "method": "app_rule_based",
-            }
-            intent = classification["intent"]
-            confidence = classification["confidence"]
-            entities = entity_extractor.extract(user_message)
-            ctx = context_manager.get_or_create(session_id)
-            reply, quick_replies = response_generator.generate(
-                intent=intent,
-                entities=entities,
-                context=ctx,
-                slot_state=current_slot_state.value,
-                extra_data={"slot_prompt": slot_prompt},
-            )
-
-            context_manager.update(
-                session_id=session_id,
-                user_message=raw_message,
-                bot_response=reply,
-                intent=intent,
-                entities=entities,
-                slot_state=current_slot_state.value,
-            )
-            try:
-                save_enquiry_log(session_id, raw_message, reply, intent, confidence)
-            except Exception as exc:
-                logger.error("Failed to save enquiry log: %s", exc)
-
-            return jsonify(
-                {
-                    "reply": reply,
-                    "quick_replies": quick_replies,
-                    "intent": intent,
-                    "confidence": confidence,
-                    "slot_state": current_slot_state.value,
-                    "booking_id": booking_id,
-                }
-            )
-
-        # Context resolution (pronoun / anaphora)
-        resolved_message = context_manager.resolve_text(session_id, user_message)
-
-        # Entity extraction
-        entities = entity_extractor.extract(resolved_message)
-
-        # ── BUG 6: Compound query check ───────────────────────────────
-        compound = intent_classifier.classify_compound(resolved_message)
-        if compound and not slot_manager.is_active(session_id):
-            ctx = context_manager.get_or_create(session_id)
-            combined_response = ""
-            for comp_intent, comp_conf in compound:
-                r, _ = response_generator.generate(
-                    intent=comp_intent,
-                    entities=entities,
-                    context=ctx,
-                )
-                combined_response += r + "\n\n─────────\n\n"
-
-            quick_replies = QUICK_REPLIES.get(compound[0][0], QUICK_REPLIES.get("fallback", []))
-            context_manager.update(
-                session_id=session_id,
-                user_message=raw_message,
-                bot_response=combined_response.strip(),
-                intent="compound",
-                entities=entities,
-            )
-            try:
-                save_enquiry_log(session_id, raw_message, combined_response.strip(), "compound", 1.0)
-            except Exception as exc:
-                logger.error("Failed to save enquiry log: %s", exc)
-            return jsonify({
-                "reply": combined_response.strip(),
-                "quick_replies": quick_replies,
-                "intent": "compound",
-                "confidence": 1.0,
-                "slot_state": "IDLE",
-                "booking_id": None,
-            })
-
-        # Intent classification
-        classification = intent_classifier.classify(resolved_message, session_id=session_id)
-        intent = classification["intent"]
-        confidence = classification["confidence"]
-        # Persist intent history for analytics
-        try:
-            save_intent_history(session_id, intent, confidence, ",".join(classification.get("tokens", [])))
-        except Exception:
-            logger.debug("Failed to save intent history for session %s", session_id)
-
-    # ── Slot-filling state machine ────────────────────────────────────
-    if intent == "slot_booking" and not slot_manager.is_active(session_id):
-        slot_prompt = slot_manager.start_booking(session_id, entities)
-        current_slot_state = slot_manager.get_state(session_id)
-    elif slot_manager.is_active(session_id):
-        slot_prompt, completed = slot_manager.process_input(
-            session_id,
-            raw_message,
-            entities,
-            detected_intent=intent,
-            response_generator=response_generator,
-            context=context_manager.get_or_create(session_id),
-        )
+    # SLOT ACTIVE: bypass NLP entirely and process booking input directly.
+    if slot_manager.is_active(session_id):
+        slot_prompt, completed = slot_manager.process_input(session_id, user_message, entities)
         current_slot_state = slot_manager.get_state(session_id)
 
         if completed:
@@ -395,53 +275,112 @@ def chat():
             slots = slot_manager.get_slots(session_id)
             save_lead(session_id, {**entities, **slots})
 
-    # ── Generate response ─────────────────────────────────────────────
-    ctx = context_manager.get_or_create(session_id)
-    reply, quick_replies = response_generator.generate(
-        intent=intent,
-        entities=entities,
-        context=ctx,
-        slot_state=current_slot_state.value,
-        extra_data={"slot_prompt": slot_prompt},
-    )
+        reply = slot_prompt or "Please provide the requested information."
+        quick_replies = (
+            ["Cancel Booking"]
+            if current_slot_state not in (SlotState.COMPLETED, SlotState.CANCELLED)
+            else ["Fee Structure", "Courses Offered", "Contact Us"]
+        )
 
-    # Slot prompt overrides generated response
-    if slot_prompt:
-        reply = slot_prompt
-        if current_slot_state in (SlotState.COMPLETED, SlotState.CANCELLED):
-            quick_replies = ["Courses Offered", "Fee Structure", "Admission Process", "Contact Us"]
-        else:
-            quick_replies = ["Cancel Booking"]
+        context_manager.update(
+            session_id,
+            user_message,
+            reply,
+            "slot_booking",
+            entities,
+            current_slot_state.value,
+        )
+        try:
+            save_enquiry_log(session_id, user_message, reply, "slot_booking", 1.0)
+        except Exception as exc:
+            logger.error("Failed to save enquiry log: %s", exc)
 
-    # ── PART H: Repeat question detection ─────────────────────────────
-    history = context_manager.get_history(session_id)
-    if len(history) >= 1 and not slot_prompt:
-        prev_intents = [h.get("intent") for h in history[-3:]]
-        if intent in prev_intents and intent not in ("greeting", "goodbye", "fallback", "slot_booking"):
-            reply = (
-                "(Yeh information pehle bhi share ki thi, par dobara yahan hai!)\n\n"
-                + reply
+        return jsonify(
+            {
+                "reply": reply,
+                "quick_replies": quick_replies,
+                "intent": "slot_booking",
+                "confidence": 1.0,
+                "slot_state": current_slot_state.value,
+                "booking_id": booking_id,
+            }
+        )
+
+    # NORMAL FLOW: run NLP classification.
+    classification = intent_classifier.classify(resolved_message, session_id=session_id)
+    intent = classification["intent"]
+    confidence = classification["confidence"]
+    current_slot_state = slot_manager.get_state(session_id)
+
+    try:
+        save_intent_history(session_id, intent, confidence, ",".join(classification.get("tokens", [])))
+    except Exception:
+        logger.debug("Failed to save intent history for session %s", session_id)
+
+    compound = intent_classifier.classify_compound(resolved_message)
+    if compound and not slot_manager.is_active(session_id):
+        ctx = context_manager.get_or_create(session_id)
+        combined_response = ""
+        for comp_intent, _ in compound:
+            r, _ = response_generator.generate(
+                intent=comp_intent,
+                entities=entities,
+                context=ctx,
+                slot_state=current_slot_state.value,
+                extra_data=classification,
             )
+            combined_response += r + "\n\n─────────\n\n"
 
-    # ── Update context ────────────────────────────────────────────────
+        reply = combined_response.strip()
+        quick_replies = QUICK_REPLIES.get(compound[0][0], QUICK_REPLIES.get("fallback", []))
+        context_manager.update(session_id, user_message, reply, "compound", entities, current_slot_state.value)
+        try:
+            save_enquiry_log(session_id, user_message, reply, "compound", 1.0)
+        except Exception as exc:
+            logger.error("Failed to save enquiry log: %s", exc)
+
+        return jsonify(
+            {
+                "reply": reply,
+                "quick_replies": quick_replies,
+                "intent": "compound",
+                "confidence": 1.0,
+                "slot_state": current_slot_state.value,
+                "booking_id": None,
+            }
+        )
+
+    if intent == "slot_booking":
+        slot_prompt = slot_manager.start_booking(session_id, entities)
+        current_slot_state = slot_manager.get_state(session_id)
+        reply = slot_prompt
+        quick_replies = ["Cancel Booking"]
+    else:
+        ctx = context_manager.get_or_create(session_id)
+        reply, quick_replies = response_generator.generate(
+            intent=intent,
+            entities=entities,
+            context=ctx,
+            slot_state=current_slot_state.value,
+            extra_data=classification,
+        )
+
     context_manager.update(
-        session_id=session_id,
-        user_message=raw_message,
-        bot_response=reply,
-        intent=intent,
-        entities=entities,
-        slot_state=current_slot_state.value,
+        session_id,
+        user_message,
+        reply,
+        intent,
+        entities,
+        current_slot_state.value,
     )
 
-    # Persist session context snapshot for admin analytics
     try:
         save_session_context(session_id, context_manager.get_or_create(session_id))
     except Exception:
         logger.debug("Failed to persist session context for %s", session_id)
 
-    # Persist enquiry log
     try:
-        save_enquiry_log(session_id, raw_message, reply, intent, confidence)
+        save_enquiry_log(session_id, user_message, reply, intent, confidence)
     except Exception as exc:
         logger.error("Failed to save enquiry log: %s", exc)
 

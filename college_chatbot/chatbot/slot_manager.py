@@ -209,6 +209,17 @@ class SlotManager:
                 False,
             )
 
+        # STEP 1.5: Always prioritize the booking's first two fields.
+        # Name and phone must be collected even if the classifier would
+        # otherwise treat the message as a different intent.
+        if state == SlotState.COLLECTING_NAME:
+            response = self._collect_name(slots, text, entities)
+            return response, slots.get("state") == SlotState.COMPLETED
+
+        if state == SlotState.COLLECTING_PHONE:
+            response = self._collect_phone(slots, text, entities)
+            return response, slots.get("state") == SlotState.COMPLETED
+
         # STEP 2: Interrupt detection (non-slot question during booking)
         if (
             state not in (SlotState.IDLE, SlotState.COMPLETED, SlotState.CANCELLED)
@@ -282,6 +293,9 @@ class SlotManager:
 
     def _collect_name(self, slots: dict, text: str, entities: dict) -> str:
         name = entities.get("person_name") or text.strip()
+        # Clean common user prefixes like "my name is", "name is", or accidental leading "is"
+        name = re.sub(r"^(my name is|name is|i am|i'm|myself|this is|is)\s+",
+                      "", name, flags=re.IGNORECASE).strip().title()
         if not self._is_valid_name(name):
             return "Please apna **poora naam** batayein (at least 3 characters)."
         slots["name"] = name
@@ -309,7 +323,7 @@ class SlotManager:
                 slots["status"] = "cancelled"
                 return (
                     "Lagta hai number mein dikkat hai. Seedha humse contact "
-                    "karein: +91-751-2970300 😊"
+                        "karein: +91-7773005065 😊"
                 )
             return (
                 "❌ Please ek valid **10-digit Indian mobile number** enter karein "
@@ -387,8 +401,8 @@ class SlotManager:
                 f"📋 Booking ID: {booking_id}\n"
                 f"📅 {slots.get('preferred_date')} ko {slots.get('preferred_time')} baje "
                 f"ITM Gwalior admission office mein aaiye.\n\n"
-                f"📍 Address: AB Road, Gwalior, MP 474001\n"
-                f"📞 Helpline: +91-751-2970300\n\n"
+                    f"📍 Address: ITM Campus, Opp. Sithouli Railway Station, NH-75, Gwalior - 475001\n"
+                    f"📞 Helpline: +91-7773005065\n\n"
                 f"Koi aur sawaal?",
                 True,
             )

@@ -105,6 +105,8 @@
     {
       "tag": "admission_process",
       "patterns": [
+        "Admission Process",
+        "admission process",
         "how to apply",
         "admission procedure",
         "steps for admission",
@@ -139,6 +141,8 @@
     {
       "tag": "courses_offered",
       "patterns": [
+        "Courses Offered",
+        "courses offered",
         "which courses are available",
         "list of programs",
         "what can I study",
@@ -208,6 +212,8 @@
     {
       "tag": "eligibility",
       "patterns": [
+        "Eligibility Criteria",
+        "eligibility criteria",
         "what marks are needed",
         "minimum percentage required",
         "eligibility criteria",
@@ -240,6 +246,8 @@
     {
       "tag": "fees_structure",
       "patterns": [
+        "Fee Structure",
+        "fee structure",
         "how much are the fees",
         "course fee details",
         "fees kitni hai",
@@ -272,6 +280,10 @@
     {
       "tag": "placement",
       "patterns": [
+        "Placement Info",
+        "placement info",
+        "tap cell",
+        "tap info",
         "placement kya hai",
         "placement ratio kya hai",
         "what is your placement",
@@ -311,6 +323,11 @@
     {
       "tag": "companies_recruiters",
       "patterns": [
+        "Companies List",
+        "companies list",
+        "show companies",
+        "recruiter list",
+        "companies info",
         "kon kon si company aati hai",
         "which companies visit",
         "tumhare clg main kon si company aati hai",
@@ -557,6 +574,8 @@
     {
       "tag": "documents_needed",
       "patterns": [
+        "Documents Needed",
+        "documents needed",
         "required documents",
         "what papers to bring",
         "documents list",
@@ -584,6 +603,9 @@
     {
       "tag": "hostel_info",
       "patterns": [
+        "hostel info",
+        "hostel details",
+        "show hostel",
         "hostel facility",
         "accommodation available",
         "room availability",
@@ -616,6 +638,8 @@
     {
       "tag": "contact_info",
       "patterns": [
+        "Contact Us",
+        "contact us",
         "phone number",
         "email address",
         "contact information",
@@ -648,6 +672,8 @@
     {
       "tag": "scholarship",
       "patterns": [
+        "Scholarship Info",
+        "scholarship info",
         "scholarship details",
         "financial aid available",
         "merit scholarship",
@@ -677,6 +703,9 @@
     {
       "tag": "facilities",
       "patterns": [
+        "Facilities",
+        "facilities info",
+        "campus info",
         "facilities kya hain",
         "campus facilities",
         "infrastructure",
@@ -708,6 +737,8 @@
     {
       "tag": "internship",
       "patterns": [
+        "Internship Info",
+        "internship info",
         "internship kaise milegi",
         "internship facility",
         "summer internship",
@@ -759,6 +790,7 @@
     {
       "tag": "result_status",
       "patterns": [
+        "Result Status",
         "when will results come",
         "merit list",
         "selection list",
@@ -816,6 +848,9 @@
     {
       "tag": "slot_booking",
       "patterns": [
+        "Book Appointment",
+        "Book Campus Visit",
+        "book appointment",
         "book an appointment",
         "schedule a visit",
         "counselling slot",

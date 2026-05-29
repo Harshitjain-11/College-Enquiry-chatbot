@@ -10,6 +10,7 @@ Provides SQLite database initialization and CRUD operations for:
 import uuid
 import sqlite3
 import logging
+import os
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
@@ -17,7 +18,11 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "database" / "college.db"
+RUNTIME_ROOT = Path(os.environ.get(
+    "ITM_CHATBOT_RUNTIME_DIR",
+    Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "itm_chatbot",
+))
+DB_PATH = RUNTIME_ROOT / "database" / "college.db"
 
 
 def _get_connection() -> sqlite3.Connection:
@@ -25,7 +30,6 @@ def _get_connection() -> sqlite3.Connection:
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(DB_PATH))
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL;")
     return conn
 
 

@@ -7,9 +7,10 @@ Implements a hybrid classification approach:
 3. Keyword fallback rules
 """
 
-import os
 import json
 import logging
+import os
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -18,7 +19,11 @@ from chatbot.nlp_engine import NLPEngine
 logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-LOG_DIR = BASE_DIR / "logs"
+RUNTIME_ROOT = Path(os.environ.get(
+    "ITM_CHATBOT_RUNTIME_DIR",
+    Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "itm_chatbot",
+))
+LOG_DIR = RUNTIME_ROOT / "logs"
 LOG_FILE = LOG_DIR / "chat_log.txt"
 INTENTS_PATH = BASE_DIR / "data" / "intents.json"
 
@@ -60,6 +65,21 @@ class IntentClassifier:
         """
         tokens, cleaned = self.nlp.preprocess(text)
         text_lower = text.lower().strip()
+
+        percent_match = re.search(r'(\d{1,3})\s*%|(\d{1,3})\s*percent|(\d{1,3})\s*marks', text_lower)
+        eligibility_words = ["eligible", "admission", "milega", "le sakta", "apply", "qualify", "le skta", "lena hai"]
+        if percent_match and any(word in text_lower for word in eligibility_words):
+            percentage = next((group for group in percent_match.groups() if group), None)
+            result = {
+                "intent": "eligibility_check",
+                "confidence": 0.95,
+                "matched_keywords": [percent_match.group()],
+                "tokens": tokens,
+                "method": "regex_percentage",
+                "percentage": int(percentage) if percentage else None,
+            }
+            self._log(session_id, text, result)
+            return result
 
         # Step 0: High-confidence rule-based routing for common conversational phrases
         rule_intent = self._rule_based_intent(text_lower)

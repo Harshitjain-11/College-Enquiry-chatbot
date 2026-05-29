@@ -130,7 +130,29 @@ class ContextManager:
             Resolved text string (may be unchanged).
         """
         ctx = self.get_or_create(session_id)
+        last_intent = ctx.get("current_intent") or ctx.get("previous_intent") or ctx.get("active_topic") or ""
         text_lower = text.lower().strip()
+
+        vague_phrases = [
+            "yes", "yes please", "tell me more", "about it",
+            "know about it", "want to know", "i want to know about it",
+            "more details", "detail chahiye", "batao", "aur batao",
+            "haan", "haan batao", "ok tell me", "sure",
+        ]
+
+        if any(text_lower == phrase or text_lower.startswith(phrase) for phrase in vague_phrases):
+            intent_followup = {
+                "companies_recruiters": "tell me about placement and internship process",
+                "placement": "tell me about companies and internship",
+                "courses_offered": "tell me about all courses in detail",
+                "specializations": "tell me about specialization fees and eligibility",
+                "hostel_info": "tell me about hostel fees and facilities",
+                "scholarship": "tell me about scholarship eligibility and process",
+                "facilities": "tell me about campus facilities in detail",
+                "internship": "tell me about internship companies and process",
+            }
+            if last_intent in intent_followup:
+                return intent_followup[last_intent]
 
         # Check if any pronoun is present (use word-boundary-aware check)
         # Sort by length descending so longer matches are attempted first
