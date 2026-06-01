@@ -59,4 +59,4 @@ def test_follow_up_context(components):
     # when cleaned, intent should resolve to fees_structure or related
     assert c2["intent"] in ("fees_structure", "fees_structure", "course_detail", "fees_structure" )
 
-*** End Patch
+#  End Patch
