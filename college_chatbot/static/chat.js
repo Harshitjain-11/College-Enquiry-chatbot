@@ -1,223 +1,182 @@
 /**
  * chat.js — ITM Gwalior College Enquiry Chatbot
- * Handles all client-side chat interaction with zero dependencies.
  */
 
-// ── Session ID ───────────────────────────────────────────────────────────────
-
-function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
-const SESSION_KEY = 'itm_session_id';
+// ── Session ───────────────────────────────────────────────────
+const SESSION_KEY = 'itm_chatbot_session';
 let sessionId = localStorage.getItem(SESSION_KEY);
 if (!sessionId) {
-  sessionId = generateUUID();
+  sessionId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+  });
   localStorage.setItem(SESSION_KEY, sessionId);
 }
 
-// ── DOM References ────────────────────────────────────────────────────────────
+// ── Today label ───────────────────────────────────────────────
+document.getElementById('todayLabel').textContent =
+  new Date().toLocaleDateString('en-IN', {
+    weekday: 'long', day: 'numeric', month: 'long'
+  });
 
-const chatWindow     = document.getElementById('chatWindow');
-const userInput      = document.getElementById('userInput');
-const sendBtn        = document.getElementById('sendBtn');
-const typingIndicator = document.getElementById('typingIndicator');
+// ── DOM ───────────────────────────────────────────────────────
+const chatWindow = document.getElementById('chatWindow');
+const userInput  = document.getElementById('userInput');
+const sendBtn    = document.getElementById('sendBtn');
+const typingRow  = document.getElementById('typingRow');
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────
+const getTime = () =>
+  new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-function getTime() {
-  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-/** Render basic markdown: **bold**, \n line breaks */
 function renderMarkdown(text) {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\n/g, '<br/>');
 }
 
-/** Scroll chat window to the bottom */
 function scrollToBottom() {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// ── Message Rendering ─────────────────────────────────────────────────────────
-
-/**
- * Append a message bubble to the chat window.
- * @param {string} text       - Message content (may contain **bold** and \n)
- * @param {'bot'|'user'} role - Sender role
- * @param {string[]} quickReplies - Optional quick reply button labels
- */
+// ── Append Message ────────────────────────────────────────────
 function appendMessage(text, role, quickReplies = []) {
   const row = document.createElement('div');
-  row.className = `message-row ${role}`;
+  row.className = 'row ' + role;
 
-  // Bot avatar (only for bot)
+  // Bot avatar — gold ITM badge
   if (role === 'bot') {
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar';
-    avatar.textContent = 'IT';
-    row.appendChild(avatar);
+    const av = document.createElement('div');
+    av.className = 'av';
+    av.textContent = 'ITM';
+    row.appendChild(av);
   }
 
-  // Bubble wrapper
-  const wrap = document.createElement('div');
-  wrap.className = 'bubble-wrap';
+  const bwrap = document.createElement('div');
+  bwrap.className = 'bwrap';
 
-  // Bubble
   const bubble = document.createElement('div');
   bubble.className = 'bubble';
   bubble.innerHTML = renderMarkdown(text);
-  wrap.appendChild(bubble);
+  bwrap.appendChild(bubble);
 
-  // Timestamp
   const ts = document.createElement('div');
-  ts.className = 'timestamp';
+  ts.className = 'ts';
   ts.textContent = getTime();
-  wrap.appendChild(ts);
+  bwrap.appendChild(ts);
 
   // Quick reply buttons
   if (quickReplies && quickReplies.length > 0) {
-    const qrContainer = document.createElement('div');
-    qrContainer.className = 'quick-replies';
-    quickReplies.forEach((label) => {
+    const qrs = document.createElement('div');
+    qrs.className = 'qrs';
+    quickReplies.forEach(label => {
       const btn = document.createElement('button');
-      btn.className = 'quick-btn';
-      btn.type = 'button';
+      btn.className = 'qr-btn';
       btn.textContent = label;
-      btn.addEventListener('click', () => {
-        sendUserMessage(label);
-      });
-      qrContainer.appendChild(btn);
+      btn.onclick = () => sendUserMessage(label);
+      qrs.appendChild(btn);
     });
-    wrap.appendChild(qrContainer);
+    bwrap.appendChild(qrs);
   }
 
-  row.appendChild(wrap);
+  row.appendChild(bwrap);
   chatWindow.appendChild(row);
   scrollToBottom();
-  return row;
 }
 
-// ── Typing Indicator ──────────────────────────────────────────────────────────
+// ── Typing ────────────────────────────────────────────────────
+function showTyping()  { typingRow.style.display = 'flex'; scrollToBottom(); }
+function hideTyping()  { typingRow.style.display = 'none'; }
 
-function showTyping() {
-  typingIndicator.style.display = 'flex';
-  scrollToBottom();
+// ── Input State ───────────────────────────────────────────────
+function setInputEnabled(on) {
+  userInput.disabled = !on;
+  sendBtn.disabled   = !on || userInput.value.trim().length === 0;
+  if (on) userInput.focus();
 }
 
-function hideTyping() {
-  typingIndicator.style.display = 'none';
-}
+userInput.addEventListener('input', () => {
+  sendBtn.disabled = userInput.value.trim().length === 0;
+});
 
-// ── Input State ───────────────────────────────────────────────────────────────
-
-function setInputEnabled(enabled) {
-  userInput.disabled = !enabled;
-  sendBtn.disabled   = !enabled;
-  if (enabled) userInput.focus();
-}
-
-// ── API Communication ─────────────────────────────────────────────────────────
-
-/**
- * Send a message to the /chat endpoint and handle the response.
- * @param {string} text - Message to send.
- */
+// ── Send ──────────────────────────────────────────────────────
 async function sendUserMessage(text) {
-  const trimmed = text.trim();
-  if (!trimmed) return;
+  const msg = text.trim();
+  if (!msg) return;
 
-  // Show user bubble
-  appendMessage(trimmed, 'user');
+  appendMessage(msg, 'user');
   userInput.value = '';
   setInputEnabled(false);
-  sendBtn.blur();
 
-  // Simulate typing delay for realism
-  await new Promise((r) => setTimeout(r, 350));
+  await new Promise(r => setTimeout(r, 380));
   showTyping();
 
   try {
-    const response = await fetch('/chat', {
-      method: 'POST',
+    const res = await fetch('/chat', {
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: trimmed, session_id: sessionId }),
+      body:    JSON.stringify({ message: msg, session_id: sessionId }),
     });
 
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
 
     hideTyping();
+    appendMessage(
+      data.reply || 'Something went wrong. Please try again.',
+      'bot',
+      data.quick_replies || []
+    );
 
-    // Main reply
-    const reply = data.reply || "I'm sorry, something went wrong. Please try again.";
-    const qr    = data.quick_replies || [];
-    appendMessage(reply, 'bot', qr);
-
-    // If booking completed, show booking ID highlight
     if (data.booking_id) {
-      const bookingMsg = `✅ Your **Booking ID** is: **${data.booking_id}**\nPlease save this for reference.`;
-      appendMessage(bookingMsg, 'bot', ['Track Appointment', 'Contact Us']);
+      appendMessage(
+        '✅ Your **Booking ID**: **' + data.booking_id + '**\nPlease save this for your visit.',
+        'bot',
+        ['Contact Us']
+      );
     }
 
   } catch (err) {
     hideTyping();
-    console.error('Chat API error:', err);
     appendMessage(
       '⚠️ Network error. Please check your connection and try again.',
       'bot',
-      ['Retry', 'Contact Us']
+      ['Retry']
     );
   } finally {
     setInputEnabled(true);
   }
 }
 
-// ── Send Handler (button + Enter key) ────────────────────────────────────────
-
 function sendMessage() {
   const text = userInput.value.trim();
   if (text) sendUserMessage(text);
 }
 
-userInput.addEventListener('keydown', (e) => {
+// Enter key
+userInput.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
     sendMessage();
   }
 });
 
-// Disable send button when input is empty
-userInput.addEventListener('input', () => {
-  sendBtn.disabled = userInput.value.trim().length === 0;
-});
+// Send button click
+sendBtn.addEventListener('click', sendMessage);
 
-// ── Welcome Message ───────────────────────────────────────────────────────────
-
+// ── Welcome Message ───────────────────────────────────────────
 (function showWelcome() {
-  const welcomeText =
+  appendMessage(
     '👋 Welcome to **Institute of Technology & Management, Gwalior**!\n\n' +
     'I\'m your virtual admission counsellor. I can help you with:\n' +
     '📚 Courses & Eligibility (B.Tech affiliated to RGPV Bhopal)\n' +
     '💰 Fee Structure & Scholarships\n' +
     '📝 Admission Process & Dates\n' +
     '📅 Book a Campus Visit\n\n' +
-    'What would you like to know? 😊';
-
-  appendMessage(welcomeText, 'bot', [
-    'Admission Process',
-    'Courses Offered',
-    'Fee Structure',
-    'Book Appointment',
-  ]);
-
-  // Initial send button state
+    'What would you like to know? 😊',
+    'bot',
+    ['Admission Process', 'Courses Offered', 'Fee Structure', 'Book Appointment']
+  );
   sendBtn.disabled = true;
   userInput.focus();
 })();
