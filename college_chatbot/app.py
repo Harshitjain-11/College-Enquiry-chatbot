@@ -68,7 +68,7 @@ from database.db_manager import (
 BASE_DIR = Path(__file__).resolve().parent
 RUNTIME_ROOT = Path(os.environ.get(
     "ITM_CHATBOT_RUNTIME_DIR",
-    Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "itm_chatbot",
+    BASE_DIR / "runtime_data",
 ))
 LOG_DIR = RUNTIME_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)

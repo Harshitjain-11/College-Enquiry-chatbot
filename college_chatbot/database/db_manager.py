@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 BASE_DIR = Path(__file__).resolve().parent.parent
 RUNTIME_ROOT = Path(os.environ.get(
     "ITM_CHATBOT_RUNTIME_DIR",
-    Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "itm_chatbot",
+    BASE_DIR / "runtime_data",
 ))
 DB_PATH = RUNTIME_ROOT / "database" / "college.db"
 
