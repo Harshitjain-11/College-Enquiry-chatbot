@@ -276,6 +276,7 @@ class EntityExtractor:
                 kb = json.load(f)
             courses: list[str] = []
             extra_courses = [
+                "B.Tech", "BTech", "MTech",
                 "CS-AIML", "AIML", "AI ML", "Artificial Intelligence Machine Learning",
                 "CS-DS", "Data Science", "CS-Cybersecurity", "Cybersecurity",
                 "B.Tech IT", "Information Technology", "CS-IoT", "IoT",

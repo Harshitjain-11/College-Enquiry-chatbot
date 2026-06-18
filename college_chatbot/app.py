@@ -18,6 +18,19 @@ import logging
 import secrets
 from functools import wraps
 from pathlib import Path
+import nltk
+
+# Download required NLTK data for deployment (e.g., on Railway)
+nltk_packages = [
+    'punkt', 'punkt_tab', 'stopwords', 'wordnet',
+    'averaged_perceptron_tagger', 'averaged_perceptron_tagger_eng',
+    'maxent_ne_chunker', 'maxent_ne_chunker_tab', 'words', 'omw-1.4'
+]
+for pkg in nltk_packages:
+    try:
+        nltk.download(pkg, quiet=True)
+    except Exception:
+        pass
 
 from flask import (
     Flask,
@@ -491,6 +504,7 @@ def server_error(e):
 
 # ── Entry point ───────────────────────────────────────────────────────────────
 
+_initialize_components()
+
 if __name__ == "__main__":
-    _initialize_components()
     app.run(debug=False, host="0.0.0.0", port=5000)
