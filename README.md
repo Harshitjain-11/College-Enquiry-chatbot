@@ -1,65 +1,133 @@
-# ITM Gwalior Chatbot 🎓🤖
+# ITM Gwalior — Intelligent College Enquiry Chatbot 🎓🤖
 
-An intelligent, NLP-powered college enquiry and appointment booking chatbot designed specifically for ITM Gwalior. The chatbot handles student queries, provides information about courses, fees, scholarships, and allows users to seamlessly book campus visit appointments.
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0.0-lightgrey.svg)](https://flask.palletsprojects.com/)
+[![NLTK](https://img.shields.io/badge/NLTK-3.9.3-green.svg)](https://www.nltk.org/)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/)
+
+A production-ready, intelligent NLP-powered chatbot designed specifically for **Institute of Technology & Management (ITM), Gwalior**. It seamlessly handles student queries regarding courses, fees, scholarships, and facilitates automated campus visit appointments.
+
+---
 
 ## 🏗️ Architecture & Flow Diagram
 
-Here is how the different components of the chatbot work together:
+The application follows a robust modular architecture separating the frontend, web server, NLP engine, and data storage.
 
 ![Architecture Diagram](./architecture.png)
-*(Note: Please rename your flow diagram image to `architecture.png` and upload it to your GitHub repository so it displays here.)*
 
-## ✨ Features
-- **Natural Language Processing (NLP):** Uses TF-IDF, Cosine Similarity, and Keyword matching to classify user intents accurately.
-- **Context Management:** Remembers up to 10 conversational turns and resolves pronouns for contextual awareness.
-- **Entity Extraction:** Automatically extracts phone numbers, emails, course names, and dates from user messages.
-- **Slot Booking Engine:** An 8-state machine that handles interactive campus visit bookings.
-- **Admin Panel:** Secure dashboard to view statistics, manage appointments, and export data to CSV.
-- **Data-Driven:** Easily updatable JSON files for intents, FAQs, and knowledge base.
+*(The diagram illustrates the flow from the browser to the Flask server, passing through the NLP pipeline (Intent Classification → Entity Extraction → Context Management) and finally generating a response using JSON knowledge bases and SQLite).*
 
-## 📂 Project Structure (How Files Work Together)
+---
 
-### 1. Frontend (Browser)
-- `index.html` & `chat.js`: The user interface for the chatbot.
+## ✨ Core Features
 
-### 2. Flask Server (`app.py`)
-Acts as the main backend server connecting the frontend to the NLP pipeline.
-- Routes: `/chat` (messaging), `/admin` (dashboard), `/health` (status), `/slot/cancel` (booking cancellation).
+- **Hybrid NLP Engine:** Uses Exact Match, Keyword Boost, and TF-IDF Cosine Similarity for highly accurate intent classification.
+- **Context Awareness:** Maintains up to 10 conversational turns, allowing users to use pronouns (e.g., "uska fee kitna hai").
+- **Smart Entity Extraction:** Automatically detects phone numbers, emails, courses, dates, and times from raw user input.
+- **Interactive Slot Booking:** An automated 8-state machine that handles lead generation and appointment booking step-by-step.
+- **Admin Dashboard:** Secure, password-protected panel (`/admin`) to view analytics, manage appointments, and export data.
+- **Hinglish Support:** Trained to understand mixed-language queries typical of Indian students (e.g., "admission process kya hai?").
 
-### 3. NLP Pipeline (`chatbot/` folder)
-- **`intent_classifier.py`**: Identifies what the user wants (Exact Match → Keyword → TF-IDF).
-- **`nlp_engine.py`**: Core engine for text processing and similarity scoring.
-- **`entity_extractor.py`**: Extracts essential user information (Phone, email, course, date).
-- **`slot_manager.py`**: Manages the step-by-step appointment booking flow.
-- **`context_manager.py`**: Maintains conversation history.
-- **`response_generator.py`**: Generates replies based on 26 distinct intent handlers.
+---
 
-### 4. Data Files (`data/` folder)
-- **`intents.json`**: 25 intents, 500+ patterns for training the TF-IDF model.
-- **`knowledge_base.json`**: Real college data (Courses, fees, placements, contacts).
-- **`faqs.json`**: 44 Q&A pairs for fallback and exact matching.
+## 📂 Project Structure
 
-### 5. Database & Storage
-- **`database/college.db`**: SQLite3 database with 3 tables (Appointments, Leads, Logs).
-- **`db_manager.py`**: Handles all database operations.
-- **`models/vectorizer.pkl`**: The trained TF-IDF model.
-- **`logs/`**: Stores `app.log` and `chat_log.txt`.
+```text
+college_chatbot/
+├── app.py                     # Main Flask Application
+├── Procfile                   # Railway Deployment config (gunicorn)
+├── requirements.txt           # Project dependencies
+├── setup.py                   # Setup script (Downloads NLTK data, inits DB)
+│
+├── chatbot/                   # 🧠 NLP Pipeline
+│   ├── nlp_engine.py          # TF-IDF vectorization & similarity engine
+│   ├── intent_classifier.py   # Intent prediction logic
+│   ├── entity_extractor.py    # Regex & NLP based entity extraction
+│   ├── slot_manager.py        # Booking state machine
+│   ├── context_manager.py     # Session history management
+│   └── response_generator.py  # Dynamic response builder
+│
+├── data/                      # 🗄️ JSON Knowledge Bases
+│   ├── intents.json           # NLP training patterns (500+ patterns)
+│   ├── knowledge_base.json    # Real college data (Fees, Courses, Contacts)
+│   └── faqs.json              # Direct Q&A pairs
+│
+├── database/                  # 💾 Storage
+│   ├── college.db             # SQLite3 database (Appointments, Leads, Logs)
+│   └── db_manager.py          # CRUD operations
+│
+├── tests/                     # 🧪 Testing Suite
+│   ├── e2e_tests.py           # End-to-End user flow simulations
+│   ├── run_smoke_tests.py     # Quick API endpoint health checks
+│   ├── stress_tests.py        # Load testing for concurrent users
+│   └── test_nlp_and_response.py # NLP accuracy & intent validation
+│
+└── templates/ & static/       # 🎨 Frontend UI (HTML, CSS, Vanilla JS)
+```
 
-## 🚀 Deployment (Railway.app)
+---
 
-This project is optimized for deployment on Linux containers (like Railway) using `gunicorn`.
+## 🧪 Testing Suite
 
-1. **Connect GitHub to Railway:** Choose "Deploy from GitHub repo" and select this repository.
-2. **Set Root Directory:** In Railway Settings, set the Root Directory to `college_chatbot`.
+We have included a comprehensive testing suite inside the `tests/` directory to ensure reliability before deployment:
+
+1. **Smoke Tests (`run_smoke_tests.py`):** Ensures all critical endpoints (`/chat`, `/health`, `/admin`) are up and responding correctly.
+2. **NLP Validation (`test_nlp_and_response.py`):** Feeds various phrasing variations to the NLP engine to ensure the TF-IDF model correctly predicts intents.
+3. **End-to-End Tests (`e2e_tests.py`):** Simulates a complete user conversation, including the multi-step slot booking process.
+4. **Stress Testing (`stress_tests.py`):** Tests the Flask server under concurrent load to ensure it doesn't crash during traffic spikes.
+
+**To run tests locally:**
+```bash
+python tests/test_nlp_and_response.py
+```
+
+---
+
+## 🚀 Deployment (Railway)
+
+This application is configured for instant deployment on Linux containers like [Railway.app](https://railway.app).
+
+1. **Connect GitHub:** Create a New Project on Railway and select this repository.
+2. **Root Directory:** In Railway Settings, set the Root Directory to `college_chatbot`.
 3. **Environment Variables:**
-   - `FLASK_SECRET_KEY`: Your secure secret key
-   - `ADMIN_USERNAME`: Admin login username
-   - `ADMIN_PASSWORD`: Admin login password
-4. The included `Procfile` (`web: gunicorn app:app`) and NLTK auto-downloader in `app.py` will handle the rest automatically!
+   - `FLASK_SECRET_KEY`: Set a secure random string.
+   - `ADMIN_USERNAME`: Your desired admin username (default: `admin`).
+   - `ADMIN_PASSWORD`: Your secure admin password.
+4. Railway will automatically detect the `Procfile`, install `requirements.txt`, run the NLTK downloader inside `app.py`, and launch via `gunicorn`.
+
+---
 
 ## 🛠️ Local Setup
-1. Clone the repository.
-2. Navigate to the project directory: `cd college_chatbot`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the setup script to initialize the database and train the model: `python setup.py`
-5. Start the server: `python app.py`
+
+If you want to run or modify the bot on your local Windows/Mac machine:
+
+```bash
+# 1. Navigate to project folder
+cd college_chatbot
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run setup (Initializes database & downloads NLTK resources)
+python setup.py
+
+# 4. Start the development server
+python app.py
+```
+*Visit `http://localhost:5000` to interact with the bot.*
+
+---
+
+## 🔮 Future Improvements / Roadmap
+
+To take this chatbot to the next level, the following features can be implemented in the future:
+
+1. **Advanced LLM Fallback (AI Integration):** Integrate OpenAI (ChatGPT) or Google Gemini API to handle complex, out-of-scope questions dynamically when the local NLP model fails to find an intent.
+2. **WhatsApp / Telegram Integration:** Connect the Flask backend to WhatsApp Business API (Twilio/Meta) so students can chat directly from their phones.
+3. **Voice Input/Output:** Add Web Speech API in the frontend to allow students to speak their queries and listen to the responses.
+4. **Multilingual Translation:** Integrate Google Translate API to dynamically translate Hindi/Marathi/Gujarati queries to English before processing, and translate the response back to the user's native language.
+5. **Live ERP/CRM Sync:** Automatically push "Leads" and "Appointments" directly into the college's official CRM software via REST APIs instead of just SQLite.
+6. **Live Agent Handoff:** A feature where the bot transfers the chat to a real human counsellor if the user gets frustrated or types "talk to human".
+
+---
+*Built for Institute of Technology & Management, Gwalior.*
